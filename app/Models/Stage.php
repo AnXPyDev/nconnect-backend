@@ -15,6 +15,6 @@ class Stage extends Model
     }
 
     function presentations() {
-        return $this->hasMany(Presentation::class)->all();
+        return $this->hasMany(Presentation::class);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\StageController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -13,6 +14,7 @@ Route::controller(SpeakerController::class)->prefix("speaker")->group(function (
 Route::controller(StageController::class)->prefix("stage")->group(function () {
     Route::post("/create", "create");
     Route::post("/index", "index");
+    Route::post("/presentations", "presentations");
 });
 
 Route::controller(PresentationController::class)->prefix("presentation")->group(function () {

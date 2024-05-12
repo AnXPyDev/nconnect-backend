@@ -6,6 +6,7 @@ use App\Models\Presentation;
 use App\Models\Speaker;
 use App\Models\Stage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PresentationController extends Controller
 {
@@ -13,24 +14,34 @@ class PresentationController extends Controller
     function create() {
         $req = request()->all();
 
-        $stage = Stage::find($req['stage']);
-        $speaker = Speaker::find($req['speaker']);
+        $stage = Stage::find($req['stage_id']);
+        $speaker = Speaker::find($req['speaker_id']);
 
         $presentation = Presentation::factory()->make([
             'name' => $req['name'],
             'description' => $req['description'],
             'start_date' => $req['start_date'],
             'end_date' => $req['end_date'],
-            'speaker' => $speaker,
-            'stage' => $stage
+            'speaker_id' => $speaker->id,
+            'stage_id' => $stage->id
         ]);
 
-        $other = $stage->presentations();
+        $others = $stage->presentations()->get()->all();
 
-        foreach ($other as $p) {
-            if ($presentation->start_date < $other->end_date && $presentation->end_date > $other->start_date) {
-                return response()->abort();
+        $overlaps = [];
+
+        foreach ($others as $other) {
+            if ($presentation->start_date->lt($other->end_date) && $presentation->end_date->gt($other->start_date)) {
+                array_push($overlaps, $other);
             }
+        }
+
+        if (sizeof($overlaps) > 0) {
+            return response()->json([
+                'code' => 1,
+                'message' => "Overlapping presentations on this stage",
+                'overlaps' => $overlaps
+            ]);
         }
 
         $presentation->save();

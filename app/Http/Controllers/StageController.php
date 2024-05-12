@@ -10,22 +10,22 @@ class StageController extends Controller
     function create() {
         $req = request()->all();
 
-        $stage = Stage::factory()->make([
+        $stage =  Stage::factory()->make([
             "name" => $req["name"],
-        ])->save();
+        ]);
+
+        $stage->save();
 
         return response()->json(['stage' => $stage]);
     }
 
     function index() {
-        return response()->json(['stages' => Stage::all()]);
+        return Stage::all();
     }
 
     function presentations() {
         $req = request()->all();
 
-        $stage = Stage::find($req["id"]);
-
-        return response()->json([ 'presentations' => $stage->presentations() ]);
+        return response()->json(['presentations' => Stage::find($req["id"])->presentations()]);
     }
 }

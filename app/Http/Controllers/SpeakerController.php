@@ -14,7 +14,9 @@ class SpeakerController extends Controller
         $speaker = Speaker::factory()->make([
             "name" => $req["name"],
             "description" => $req["description"]
-        ])->save();
+        ]);
+
+        $speaker->save();
 
         return response()->json(['speaker' => $speaker]);
     }

@@ -17,8 +17,6 @@ class PresentationFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => "Presentation " . fake()->words(3),
-            'description' => "Presentation description"
         ];
     }
 }

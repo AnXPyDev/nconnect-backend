@@ -4,6 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
+use App\Models\Stage;
+use App\Models\Speaker;
+
 return new class extends Migration
 {
     /**
@@ -20,8 +23,9 @@ return new class extends Migration
             $table->dateTime('start_date');
             $table->dateTime('end_date');
 
-            $table->foreign('stage_id')->references('id')->on('stages');
-            $table->foreign('speaker_id')->references('id')->on('speakers');
+            $table->foreignIdFor(Stage::class);
+            $table->foreignIdFor(Speaker::class);
+
         });
     }
 
