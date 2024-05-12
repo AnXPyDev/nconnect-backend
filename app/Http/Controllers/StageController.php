@@ -23,9 +23,14 @@ class StageController extends Controller
         return Stage::all();
     }
 
-    function presentations() {
-        $req = request()->all();
+    function timeslots() {
 
-        return response()->json(['presentations' => Stage::find($req["id"])->presentations()]);
+        $req = request()->validate([
+            'id' => 'required|exists:requests,id'
+        ]);
+
+        $stage = Stage::find($req["id"]);
+
+        return response()->json(['timeslots' => $stage->timeslots()->get()->all()]);
     }
 }

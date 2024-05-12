@@ -9,12 +9,7 @@ class Stage extends Model
 {
     use HasFactory;
 
-    function overlappingPresentations(Presentation $presentation) {
-        $all = $this->hasMany(Presentation::class)->get();
-        $all->jsonSerialize();
-    }
-
-    function presentations() {
-        return $this->hasMany(Presentation::class);
+    public function timeslots() {
+        return $this->hasMany(Timeslot::class);
     }
 }

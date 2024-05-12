@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Presentation;
 use App\Models\Speaker;
 use App\Models\Stage;
+use App\Models\Timeslot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -12,37 +13,31 @@ class PresentationController extends Controller
 {
 
     function create() {
-        $req = request()->all();
+        $req = request()->validate([
+            'name' => 'required|string',
+            'description' => 'string',
+            'long_description' => 'string',
+            'speaker_id' => 'required|exists:speakers,id',
+            'timeslot_id' => 'required|exists:timeslots,id'
+        ]);
 
-        $stage = Stage::find($req['stage_id']);
-        $speaker = Speaker::find($req['speaker_id']);
+        $timeslot = Timeslot::find($req['timeslot_id']);
+
+        if ($timeslot->presentation()->exists()) {
+            return response()->json([
+                'code' => 1,
+                'message' => "Timeslot already used by presentation",
+                'presentation' => $timeslot->presentation()->get()
+            ]);
+        }
 
         $presentation = Presentation::factory()->make([
             'name' => $req['name'],
             'description' => $req['description'],
-            'start_date' => $req['start_date'],
-            'end_date' => $req['end_date'],
-            'speaker_id' => $speaker->id,
-            'stage_id' => $stage->id
+            'long_description' => $req['long_description'],
+            'speaker_id' => $req['speaker_id'],
+            'timeslot_id' => $req['timeslot_id']
         ]);
-
-        $others = $stage->presentations()->get()->all();
-
-        $overlaps = [];
-
-        foreach ($others as $other) {
-            if ($presentation->start_date->lt($other->end_date) && $presentation->end_date->gt($other->start_date)) {
-                array_push($overlaps, $other);
-            }
-        }
-
-        if (sizeof($overlaps) > 0) {
-            return response()->json([
-                'code' => 1,
-                'message' => "Overlapping presentations on this stage",
-                'overlaps' => $overlaps
-            ]);
-        }
 
         $presentation->save();
 

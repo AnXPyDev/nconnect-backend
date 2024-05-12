@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Timeslot;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -18,14 +19,11 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('name');
-            $table->text('description');
+            $table->text('description')->nullable();
+            $table->text('long_description')->nullable();
 
-            $table->dateTime('start_date');
-            $table->dateTime('end_date');
-
-            $table->foreignIdFor(Stage::class);
+            $table->foreignIdFor(Timeslot::class);
             $table->foreignIdFor(Speaker::class);
-
         });
     }
 
