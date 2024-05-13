@@ -1,11 +1,21 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\TimeslotController;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpeakerController;
+
+Route::prefix("auth")->group(function () {
+    Route::controller(AdminController::class)->prefix("admin")->group(function () {
+        Route::post("/login", "login");
+        Route::middleware('auth:admin')->group(function () {
+            Route::post("/logout", "logout");
+            Route::post("/test", "test");
+        });
+    });
+});
 
 Route::controller(SpeakerController::class)->prefix("speaker")->group(function () {
     Route::post("/create", "create");
