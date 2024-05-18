@@ -12,26 +12,35 @@ Route::prefix("auth")->group(function () {
         Route::post("/login", "login");
         Route::middleware('auth:admin')->group(function () {
             Route::post("/logout", "logout");
-            Route::post("/test", "test");
+            Route::post("/info", "info");
         });
     });
 });
 
 Route::controller(SpeakerController::class)->prefix("speaker")->group(function () {
-    Route::post("/create", "create");
+    Route::middleware('auth:admin')->group(function () {
+        Route::post("/create", "create");
+    });
     Route::post("/index", "index");
 });
 
 Route::controller(StageController::class)->prefix("stage")->group(function () {
-    Route::post("/create", "create");
+    Route::middleware('auth:admin')->group(function () {
+        Route::post("/create", "create");
+    });
     Route::post("/index", "index");
     Route::post("/timeslots", "timeslots");
 });
 
 Route::controller(PresentationController::class)->prefix("presentation")->group(function () {
-    Route::post("/create", "create");
+    Route::middleware('auth:admin')->group(function () {
+        Route::post("/create", "create");
+    });
+    Route::post("/index", "index");
 });
 
 Route::controller(TimeslotController::class)->prefix("timeslot")->group(function () {
-    Route::post("/create", "create");
+    Route::middleware('auth:admin')->group(function () {
+        Route::post("/create", "create");
+    });
 });

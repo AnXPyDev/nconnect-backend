@@ -12,7 +12,8 @@ class AdminController
         $admin = Admin::all()->first();
 
         return response()->json([
-            'token' => $admin->createToken("auth_token", ["admin"])->plainTextToken
+            'token' => $admin->createToken("auth_token", ["admin"])->plainTextToken,
+            'data' => []
         ]);
     }
 
@@ -22,9 +23,9 @@ class AdminController
         return response()->json([]);
     }
 
-    public function test(Request $request) {
+    public function info(Request $request) {
         return response()->json([
-            'message' => 'hello admin'
+            "data" => []
         ]);
     }
 }
