@@ -8,7 +8,9 @@ use Illuminate\Http\Request;
 class StageController extends Controller
 {
     function create() {
-        $req = request()->all();
+        $req = $this->validate([
+            'name' => 'required',
+        ]);
 
         $stage =  Stage::factory()->make([
             "name" => $req["name"],
@@ -20,14 +22,40 @@ class StageController extends Controller
     }
 
     function index() {
-        return Stage::all();
+        return response()->json(['stages' => Stage::all()]);
+    }
+
+    function edit() {
+        $req = $this->validate([
+            "id" => "required|exists:stages,id",
+            "name" => "required"
+        ]);
+
+        $stage = Stage::find($req["id"]);
+
+        $stage->name = $req["name"];
+        $stage->save();
+
+        return response()->json(['stage' => $stage]);
+    }
+
+    function delete() {
+        $req = $this->validate([
+            'id' => 'required|exists:stages,id'
+        ]);
+
+        $stage = Stage::find($req["id"]);
+
+        $stage->delete();
+
+        return response()->json();
     }
 
     function timeslots() {
-
-        $req = request()->validate([
-            'id' => 'required|exists:requests,id'
+        $req = $this->validate([
+            'id' => 'required|exists:stages,id'
         ]);
+
 
         $stage = Stage::find($req["id"]);
 

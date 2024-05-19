@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Speaker;
 use App\Models\Stage;
 use App\Models\Timeslot;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -17,6 +18,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             AdminSeeder::class,
         ]);
+
+        $faker = fake();
 
         $stage_softdev = Stage::factory()->create([
             'name' => "SOFT DEV STAGE"
@@ -43,6 +46,13 @@ class DatabaseSeeder extends Seeder
                     'start_at' => '2020-01-01 16:00:00',
                     'end_at' => '2020-01-01 17:30:00'
                 ]
+            ]);
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            Speaker::factory()->create([
+                "name" => $faker->name(),
+                "description" => $faker->text()
             ]);
         }
 
