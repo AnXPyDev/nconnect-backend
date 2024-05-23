@@ -10,8 +10,8 @@ class TimeslotController extends Controller
 {
     function create() {
         $req = request()->validate([
-            'end_at'=> 'required|date_format:Y-m-d H:i:s',
-            'start_at'=> 'required|date_format:Y-m-d H:i:s',
+            'end_at'=> 'required|date',
+            'start_at'=> 'required|date',
             'stage_id' => 'required|exists:stages,id'
         ]);
 

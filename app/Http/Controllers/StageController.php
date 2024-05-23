@@ -34,6 +34,7 @@ class StageController extends Controller
         $stage = Stage::find($req["id"]);
 
         $stage->name = $req["name"];
+
         $stage->save();
 
         return response()->json(['stage' => $stage]);

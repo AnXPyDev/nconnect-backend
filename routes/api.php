@@ -27,6 +27,8 @@ Route::prefix("auth")->group(function () {
 Route::controller(SpeakerController::class)->prefix("speaker")->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::post("/create", "create");
+        Route::post("/edit", "edit");
+        Route::post("/delete", "delete");
     });
     Route::post("/index", "index");
 });
