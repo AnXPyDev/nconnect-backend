@@ -46,6 +46,8 @@ Route::controller(StageController::class)->prefix("stage")->group(function () {
 Route::controller(PresentationController::class)->prefix("presentation")->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::post("/create", "create");
+        Route::post("/edit", "edit");
+        Route::post("/delete", "delete");
     });
     Route::post("/index", "index");
 });
@@ -53,5 +55,8 @@ Route::controller(PresentationController::class)->prefix("presentation")->group(
 Route::controller(TimeslotController::class)->prefix("timeslot")->group(function () {
     Route::middleware('auth:admin')->group(function () {
         Route::post("/create", "create");
+        Route::post("/edit", "edit");
+        Route::post("/delete", "delete");
     });
+    Route::post("/presentation", "presentation");
 });

@@ -8,4 +8,6 @@ class Codes
     public const BADINPUT = 1;
     public const NOAUTH = 666;
     public const NOPRIV = 667;
+
+    public const OVERLAP = 992;
 }
