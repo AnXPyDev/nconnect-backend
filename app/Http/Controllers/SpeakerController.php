@@ -58,4 +58,16 @@ class SpeakerController extends Controller
 
         return response()->json();
     }
+
+    function presentations() {
+        $req = $this->validate([
+            'id' => 'required|exists:speakers,id'
+        ]);
+
+        $speaker = Speaker::find($req["id"]);
+
+        return response()->json([
+            'presentations' => $speaker->presentations()->get()->all()
+        ]);
+    }
 }

@@ -1,12 +1,8 @@
 <?php
 
-use App\Models\Timeslot;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-
-use App\Models\Stage;
-use App\Models\Speaker;
 
 return new class extends Migration
 {
@@ -15,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('presentations', function (Blueprint $table) {
+        Schema::create('testimonials', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('name');
-            $table->text('description')->nullable();
-            $table->text('long_description')->nullable();
-
-            $table->foreignIdFor(Speaker::class);
+            $table->string("author");
+            $table->text("description");
         });
     }
 
@@ -31,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('presentations');
+        Schema::dropIfExists('testimonials');
     }
 };

@@ -38,4 +38,8 @@ class Presentation extends Model
         'start_date' => 'datetime',
         'end_date' => 'datetime'
     ];
+
+    public function timeslot() {
+        return $this->hasOne(Timeslot::class);
+    }
 }

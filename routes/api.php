@@ -7,6 +7,7 @@ use App\Http\Controllers\StageController;
 use App\Http\Controllers\TimeslotController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpeakerController;
+use App\Http\Controllers\TestimonialController;
 
 
 Route::post("ping", function() {
@@ -31,6 +32,7 @@ Route::controller(SpeakerController::class)->prefix("speaker")->group(function (
         Route::post("/delete", "delete");
     });
     Route::post("/index", "index");
+    Route::post("/presentations", "presentations");
 });
 
 Route::controller(StageController::class)->prefix("stage")->group(function () {
@@ -57,6 +59,16 @@ Route::controller(TimeslotController::class)->prefix("timeslot")->group(function
         Route::post("/create", "create");
         Route::post("/edit", "edit");
         Route::post("/delete", "delete");
+        Route::post("/setpresentation", "setpresentation");
     });
     Route::post("/presentation", "presentation");
+});
+
+Route::controller(TestimonialController::class)->prefix("testimonial")->group(function () {
+    Route::middleware('auth:admin')->group(function () {
+        Route::post("/create", "create");
+        Route::post("/edit", "edit");
+        Route::post("/delete", "delete");
+    });
+    Route::post("/index", "index");
 });

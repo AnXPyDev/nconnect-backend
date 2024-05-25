@@ -10,4 +10,6 @@ class Codes
     public const NOPRIV = 667;
 
     public const OVERLAP = 992;
+    public const OCCUPIED = 993;
+    public const EMPTY = 994;
 }

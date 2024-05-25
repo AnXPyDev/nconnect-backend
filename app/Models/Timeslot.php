@@ -41,7 +41,7 @@ class Timeslot extends Model
     ];
 
     public function presentation() {
-        return $this->hasOne(Presentation::class);
+        return $this->belongsTo(Presentation::class);
     }
 
     public function stage() {

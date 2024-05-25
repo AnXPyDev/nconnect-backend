@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Http\Codes;
+use App\Models\Presentation;
 use App\Models\Stage;
 use App\Models\Timeslot;
+use http\Env\Response;
 use Illuminate\Http\Request;
+use League\CommonMark\Extension\CommonMark\Node\Inline\Code;
 
 class TimeslotController extends Controller
 {
@@ -38,7 +41,7 @@ class TimeslotController extends Controller
     }
 
     function create() {
-        $req = request()->validate([
+        $req = $this->validate([
             'end_at'=> 'required|date',
             'start_at'=> 'required|date',
             'stage_id' => 'required|exists:stages,id'
@@ -62,7 +65,7 @@ class TimeslotController extends Controller
     }
 
     function edit() {
-        $req = request()->validate([
+        $req = $this->validate([
             'id' => 'required|exists:timeslots,id',
             'end_at'=> 'required|date',
             'start_at'=> 'required|date'
@@ -85,7 +88,7 @@ class TimeslotController extends Controller
 
     }
     function delete() {
-        $req = request()->validate([
+        $req = $this->validate([
             'id' => 'required|exists:timeslots,id'
         ]);
 
@@ -97,16 +100,70 @@ class TimeslotController extends Controller
     }
 
     function presentation() {
-        $req = request()->validate([
+        $req = $this->validate([
             'id' => 'required|exists:timeslots,id'
         ]);
 
         $timeslot = Timeslot::find($req['id']);
 
-        $presentation = $timeslot->presentation()->get()->first();
+
+        $has_presentation = $timeslot->presentation();
+        if ($has_presentation->exists()) {
+            return response()->json([
+                'presentation' => $has_presentation->first()
+            ]);
+        }
 
         return response()->json([
-            'presentation' => $presentation
+            'code' => Codes::EMPTY,
+            'message' => 'Timeslot has no presentation assigned'
         ]);
     }
+
+    function setpresentation() {
+        $req = $this->validate([
+            'id' => 'required|exists:timeslots,id',
+            'presentation_id' => 'nullable|exists:presentations,id'
+        ]);
+
+
+        $timeslot = Timeslot::find($req['id']);
+
+        if (is_null($req['presentation_id'] ?? null)) {
+            $timeslot->presentation_id = null;
+            $timeslot->save();
+            return response()->json([
+                'message' => "1"
+            ]);
+        }
+
+        if ($timeslot->presentation_id == $req['presentation_id']) {
+            return response()->json([
+                'message' => "2"
+            ]);
+        }
+
+        if ($timeslot->presentation()->exists()) {
+            return response()->json([
+                'code' => Codes::OCCUPIED,
+                'message' => 'Timeslot occupied already'
+            ]);
+        }
+
+        $presentation = Presentation::find($req['presentation_id']);
+
+        if ($presentation->timeslot()->exists()) {
+            return response()->json([
+                'code' => Codes::OCCUPIED,
+                'message' => 'Presentation already in timeslot'
+            ]);
+        }
+
+        $timeslot->presentation_id = $presentation->id;
+
+        $timeslot->save();
+
+        return response()->json();
+    }
+
 }

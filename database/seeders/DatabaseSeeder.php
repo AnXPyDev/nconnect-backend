@@ -2,11 +2,14 @@
 
 namespace Database\Seeders;
 
+use App\Models\Presentation;
 use App\Models\Speaker;
 use App\Models\Stage;
+use App\Models\Testimonial;
 use App\Models\Timeslot;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use PHPUnit\Util\Test;
 
 class DatabaseSeeder extends Seeder
 {
@@ -50,8 +53,23 @@ class DatabaseSeeder extends Seeder
         }
 
         for ($i = 1; $i <= 5; $i++) {
-            Speaker::factory()->create([
+            $speaker = Speaker::factory()->create([
                 "name" => $faker->name(),
+                "description" => $faker->text()
+            ]);
+
+            for ($j = 1; $j <= 2; $j++) {
+                $presentation = Presentation::factory()->create([
+                    'name' => "Presentation" . $faker->name(),
+                    'description' => $faker->text(),
+                    'speaker_id' => $speaker->id
+                ]);
+            }
+        }
+
+        for ($i = 1; $i <= 5; $i++) {
+            Testimonial::factory()->create([
+                'author' => $faker->name(),
                 "description" => $faker->text()
             ]);
         }
