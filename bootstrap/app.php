@@ -22,6 +22,10 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->appendToGroup('auth:admin', [
             \App\Http\Middleware\AuthAdmin::class
         ]);
+
+        $middleware->appendToGroup('auth:resource', [
+            \App\Http\Middleware\AuthResource::class
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {
         //

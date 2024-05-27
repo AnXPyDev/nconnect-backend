@@ -1,5 +1,7 @@
 <?php
 
+use App\Models\Gallery;
+use App\Models\Resource;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -11,13 +13,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('resources', function (Blueprint $table) {
+        Schema::create('gallery_resource_pivot', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string("type");
-            $table->integer("size")->nullable();
-            $table->string("name");
-            $table->string("path")->unique()->nullable();
+            $table->foreignIdFor(Gallery::class);
+            $table->foreignIdFor(Resource::class);
         });
     }
 
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('resources');
+        Schema::dropIfExists('gallery_resource_pivot');
     }
 };

@@ -12,4 +12,6 @@ class Codes
     public const OVERLAP = 992;
     public const OCCUPIED = 993;
     public const EMPTY = 994;
+
+    public const NOEXTENSION = 1025;
 }
