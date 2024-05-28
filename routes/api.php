@@ -2,6 +2,7 @@
 
 use App\Http\Codes;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\PresentationController;
 use App\Http\Controllers\StageController;
 use App\Http\Controllers\TimeslotController;
@@ -84,4 +85,17 @@ Route::controller(ResourceController::class)->prefix("resource")->group(function
 
     Route::post("/images", "images");
     Route::get("/get", "get");
+});
+
+Route::controller(GalleryController::class)->prefix("gallery")->group(function () {
+    Route::middleware('auth:admin')->group(function () {
+        Route::post("/create", "create");
+        Route::post("/edit", "edit");
+        Route::post("/delete", "delete");
+        Route::post("/addimage", "addimage");
+        Route::post("/deleteimage", "deleteimage");
+    });
+
+    Route::post("/images", "images");
+    Route::post("/index", "index");
 });
