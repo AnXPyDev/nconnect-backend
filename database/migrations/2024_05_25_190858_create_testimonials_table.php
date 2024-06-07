@@ -16,6 +16,8 @@ return new class extends Migration
             $table->timestamps();
             $table->string("author");
             $table->text("description");
+
+            $table->foreignId('image_id')->nullable()->constrained('resources');
         });
     }
 

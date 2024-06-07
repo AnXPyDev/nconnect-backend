@@ -14,11 +14,13 @@ class ResourceController extends Controller {
         $req = $this->validate([
             'name' => 'required|string',
             'type' => 'required|string',
+            'metadata' => 'nullable|json'
         ]);
 
         $resource = Resource::factory()->create([
             'name' => $req['name'],
             'type' => $req['type'],
+            'metadata' => $req['metadata'] ?? null
         ]);
 
         return response()->json([
@@ -31,12 +33,14 @@ class ResourceController extends Controller {
             'id' => 'required|exists:resources,id',
             'name' => 'required|string',
             'type' => 'required|string',
+            'metadata' => 'nullable|json'
         ]);
 
         $resource = Resource::find($req['id']);
 
         $resource->name = $req['name'];
         $resource->type = $req['type'];
+        $resource->metadata = $req['metadata'] ?? null;
 
         $resource->save();
 
@@ -99,6 +103,12 @@ class ResourceController extends Controller {
     function images() {
         return response()->json([
             'images' => Resource::all()->where('type', 'image')
+        ]);
+    }
+
+    function pages() {
+        return response()->json([
+            'pages' => Resource::all()->where('type', 'page')
         ]);
     }
 }

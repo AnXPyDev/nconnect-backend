@@ -54,6 +54,33 @@ class PresentationController extends Controller
         return response()->json(['presentation' => $presentation]);
     }
 
+    function available() {
+        $req = $this->validate([
+            'timeslot_id' => 'nullable|exists:timeslots,id',
+        ]);
+
+        $available = [];
+
+        foreach (Presentation::all() as $presentation) {
+            if (!$presentation->timeslot()->exists()) {
+                $available[] = $presentation;
+            }
+        }
+
+        if (array_key_exists('timeslot_id', $req)) {
+            $timeslot = Timeslot::find($req['timeslot_id']);
+            $presentation = $timeslot->presentation();
+            if ($presentation->exists()) {
+                $available[] = $presentation->first();
+            }
+        }
+
+        return response()->json([
+            'presentations' => $available
+        ]);
+    }
+
+
     function delete() {
         $req = $this->validate([
             'id' => 'required|exists:presentations,id'

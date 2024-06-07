@@ -14,6 +14,11 @@ return new class extends Migration
         Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->json('socials')->nullable();
+
+            $table->foreignId('image_id')->nullable()->constrained('resources');
         });
     }
 

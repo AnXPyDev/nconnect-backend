@@ -13,12 +13,16 @@ class SpeakerController extends Controller
     function create() {
         $req = $this->validate([
             'name' => 'required',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'image_id' => 'nullable|exists:resources,id',
+            'socials' => 'nullable|json',
         ]);
 
         $speaker = Speaker::factory()->make([
             "name" => $req["name"],
-            "description" => $req["description"]
+            "description" => $req["description"],
+            "image_id" => $req["image_id"],
+            "socials" => $req["socials"],
         ]);
 
         $speaker->save();
@@ -34,13 +38,17 @@ class SpeakerController extends Controller
         $req = $this->validate([
             'id' => 'required|exists:speakers,id',
             'name' => 'required',
-            'description' => 'nullable'
+            'description' => 'nullable',
+            'image_id' => 'nullable|exists:resources,id',
+            'socials' => 'nullable|json'
         ]);
 
         $speaker = Speaker::find($req["id"]);
 
         $speaker->name = $req["name"];
         $speaker->description = $req["description"];
+        $speaker->image_id = $req["image_id"];
+        $speaker->socials = $req["socials"];
 
         $speaker->save();
 

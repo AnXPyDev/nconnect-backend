@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string("type");
             $table->integer("size")->nullable();
             $table->string("name");
+            $table->json('metadata')->nullable();
             $table->string("path")->unique()->nullable();
         });
     }

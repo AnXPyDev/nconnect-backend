@@ -143,13 +143,6 @@ class TimeslotController extends Controller
             ]);
         }
 
-        if ($timeslot->presentation()->exists()) {
-            return response()->json([
-                'code' => Codes::OCCUPIED,
-                'message' => 'Timeslot occupied already'
-            ]);
-        }
-
         $presentation = Presentation::find($req['presentation_id']);
 
         if ($presentation->timeslot()->exists()) {

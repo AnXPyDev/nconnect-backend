@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->foreignId('thumbnail_id')->nullable()->constrained('galleries');
+            $table->foreignId('thumbnail_id')->nullable()->constrained('resources');
         });
     }
 

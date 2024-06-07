@@ -11,12 +11,14 @@ class TestimonialController extends Controller
     function create() {
         $req = $this->validate([
             'author' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'image_id' => 'nullable|exists:resources,id',
         ]);
 
         $testimonial = Testimonial::factory()->make([
             "author" => $req["author"],
-            "description" => $req["description"]
+            "description" => $req["description"],
+            "image_id" => $req["image_id"],
         ]);
 
         $testimonial->save();
@@ -39,6 +41,7 @@ class TestimonialController extends Controller
 
         $testimonial->author = $req["author"];
         $testimonial->description = $req["description"];
+        $testimonial->image_id = $req["image_id"];
 
         $testimonial->save();
 

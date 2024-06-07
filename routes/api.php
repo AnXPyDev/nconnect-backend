@@ -54,7 +54,7 @@ Route::controller(PresentationController::class)->prefix("presentation")->group(
         Route::post("/edit", "edit");
         Route::post("/delete", "delete");
     });
-    Route::post("/index", "index");
+    Route::post("/available", "available");
 });
 
 Route::controller(TimeslotController::class)->prefix("timeslot")->group(function () {
