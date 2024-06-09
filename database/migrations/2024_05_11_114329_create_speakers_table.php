@@ -16,7 +16,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->json('socials')->nullable();
+            $table->json('contact')->nullable();
 
             $table->foreignId('image_id')->nullable()->constrained('resources');
         });

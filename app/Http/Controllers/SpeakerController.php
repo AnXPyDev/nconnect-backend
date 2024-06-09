@@ -15,14 +15,14 @@ class SpeakerController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'image_id' => 'nullable|exists:resources,id',
-            'socials' => 'nullable|json',
+            'contact' => 'nullable|json',
         ]);
 
         $speaker = Speaker::factory()->make([
             "name" => $req["name"],
             "description" => $req["description"],
             "image_id" => $req["image_id"],
-            "socials" => $req["socials"],
+            "contact" => $req["contact"],
         ]);
 
         $speaker->save();
@@ -40,7 +40,7 @@ class SpeakerController extends Controller
             'name' => 'required',
             'description' => 'nullable',
             'image_id' => 'nullable|exists:resources,id',
-            'socials' => 'nullable|json'
+            'contact' => 'nullable|json'
         ]);
 
         $speaker = Speaker::find($req["id"]);
@@ -48,7 +48,7 @@ class SpeakerController extends Controller
         $speaker->name = $req["name"];
         $speaker->description = $req["description"];
         $speaker->image_id = $req["image_id"];
-        $speaker->socials = $req["socials"];
+        $speaker->contact = $req["contact"];
 
         $speaker->save();
 

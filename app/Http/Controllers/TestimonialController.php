@@ -34,7 +34,8 @@ class TestimonialController extends Controller
         $req = $this->validate([
             'id' => 'required|exists:testimonials,id',
             'author' => 'required',
-            'description' => 'required'
+            'description' => 'required',
+            'image_id' => 'nullable|exists:resources,id'
         ]);
 
         $testimonial = Testimonial::find($req["id"]);
