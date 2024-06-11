@@ -18,14 +18,16 @@ class PresentationController extends Controller
             'name' => 'required|string',
             'description' => 'string|nullable',
             'long_description' => 'string|nullable',
-            'speaker_id' => 'required|exists:speakers,id',
+            'speaker_id' => 'nullable|exists:speakers,id',
+            'image_id' => 'nullable|exists:resources,id',
         ]);
 
         $presentation = Presentation::factory()->make([
             'name' => $req['name'],
             'description' => $req['description'],
             'long_description' => $req['long_description'],
-            'speaker_id' => $req['speaker_id']
+            'speaker_id' => $req['speaker_id'] ?? null,
+            'image_id' => $req['image_id'] ?? null
         ]);
 
         $presentation->save();
@@ -39,7 +41,7 @@ class PresentationController extends Controller
             'name' => 'required|string',
             'description' => 'string|nullable',
             'long_description' => 'string|nullable',
-            'speaker_id' => 'required|exists:speakers,id'
+            'image_id' => 'nullable|exists:resources,id'
         ]);
 
         $presentation = Presentation::find($req["id"]);
@@ -47,7 +49,7 @@ class PresentationController extends Controller
         $presentation->name = $req["name"];
         $presentation->description = $req["description"];
         $presentation->long_description = $req["long_description"];
-        $presentation->speaker_id = $req["speaker_id"];
+        $presentation->image_id = $req["image_id"] ?? null;
 
         $presentation->save();
 
@@ -80,7 +82,6 @@ class PresentationController extends Controller
         ]);
     }
 
-
     function delete() {
         $req = $this->validate([
             'id' => 'required|exists:presentations,id'
@@ -97,6 +98,18 @@ class PresentationController extends Controller
         }
 
         return response()->json([]);
+    }
+
+    function speaker() {
+        $req = $this->validate([
+            'id' => 'required|exists:presentations,id'
+        ]);
+
+        $presentation = Presentation::find($req['id']);
+
+        return response()->json([
+            'speaker' => $presentation->speaker()
+        ]);
     }
 
 }

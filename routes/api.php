@@ -8,6 +8,7 @@ use App\Http\Controllers\StageController;
 use App\Http\Controllers\TimeslotController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\SpeakerController;
+use App\Http\Controllers\HeadlinerController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ResourceController;
 
@@ -36,6 +37,15 @@ Route::controller(SpeakerController::class)->prefix("speaker")->group(function (
     });
     Route::post("/index", "index");
     Route::post("/presentations", "presentations");
+});
+
+Route::controller(HeadlinerController::class)->prefix("headliner")->group(function () {
+    Route::middleware('auth:admin')->group(function () {
+        Route::post("/create", "create");
+        Route::post("/edit", "edit");
+        Route::post("/delete", "delete");
+    });
+    Route::post("/index", "index");
 });
 
 Route::controller(StageController::class)->prefix("stage")->group(function () {
@@ -93,6 +103,7 @@ Route::controller(GalleryController::class)->prefix("gallery")->group(function (
         Route::post("/edit", "edit");
         Route::post("/delete", "delete");
         Route::post("/addimage", "addimage");
+        Route::post("/createimage", "createimage");
         Route::post("/deleteimage", "deleteimage");
     });
 

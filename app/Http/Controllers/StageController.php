@@ -60,6 +60,7 @@ class StageController extends Controller
 
         $stage = Stage::find($req["id"]);
 
-        return response()->json(['timeslots' => $stage->timeslots()->get()->all()]);
+        return response()->json(['timeslots' => $stage->timeslots()->get()]);
+
     }
 }

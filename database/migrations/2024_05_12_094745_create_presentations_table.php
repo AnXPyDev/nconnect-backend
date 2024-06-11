@@ -21,8 +21,9 @@ return new class extends Migration
             $table->string('name');
             $table->text('description')->nullable();
             $table->text('long_description')->nullable();
+            $table->foreignId('image_id')->nullable()->constrained('resources');
 
-            $table->foreignIdFor(Speaker::class);
+            $table->foreignIdFor(Speaker::class)->nullable();
         });
     }
 

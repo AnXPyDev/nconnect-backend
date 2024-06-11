@@ -15,13 +15,15 @@ class GalleryController extends Controller
         $req = $this->validate([
             'name' => 'required|string',
             'description' => 'nullable|string',
-            'thumbnail_id' => 'nullable|exists:resources,id'
+            'thumbnail_id' => 'nullable|exists:resources,id',
+            'public' => 'nullable|boolean'
         ]);
 
         $gallery = Gallery::factory()->create([
             'name' => $req['name'],
             'description' => $req['description'] ?? null,
-            'thumbnail_id' => $req['thumbnail_id'] ?? null
+            'thumbnail_id' => $req['thumbnail_id'] ?? null,
+            'public' => $req['public'] ?? null
         ]);
 
         return response()->json([
@@ -34,7 +36,8 @@ class GalleryController extends Controller
             'id' => 'required|exists:galleries,id',
             'name' => 'required|string',
             'description' => 'nullable|string',
-            'thumbnail_id' => 'nullable|exists:resources,id'
+            'thumbnail_id' => 'nullable|exists:resources,id',
+            'public' => 'nullable|boolean'
         ]);
 
         $gallery = Gallery::find($req['id']);
@@ -42,6 +45,7 @@ class GalleryController extends Controller
         $gallery->name = $req['name'];
         $gallery->description = $req['description'] ?? null;
         $gallery->thumbnail_id = $req['thumbnail_id'] ?? null;
+        $gallery->public = $req['public'] ?? false;
 
         $gallery->save();
 
@@ -109,6 +113,27 @@ class GalleryController extends Controller
 
         $pivot = GalleryResourcePivot::factory()->create([
             'gallery_id' => $gallery->id,
+            'resource_id' => $resource->id
+        ]);
+
+        return response()->json([
+            'image' => $resource
+        ]);
+    }
+
+    function createimage() {
+        $req = $this->validate([
+            'id' => 'required|exists:galleries,id',
+            'name' => 'required|string'
+        ]);
+
+        $resource = Resource::factory()->create([
+            'name' => $req['name'],
+            'type' => 'image'
+        ]);
+
+        $pivot = GalleryResourcePivot::factory()->create([
+            'gallery_id' => $req['id'],
             'resource_id' => $resource->id
         ]);
 
