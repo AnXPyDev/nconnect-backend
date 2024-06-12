@@ -21,8 +21,8 @@ class SpeakerController extends Controller
         $speaker = Speaker::factory()->make([
             "name" => $req["name"],
             "description" => $req["description"],
-            "image_id" => $req["image_id"],
-            "contact" => $req["contact"],
+            "image_id" => $req["image_id"] ?? null,
+            "contact" => $req["contact"] ?? null,
         ]);
 
         $speaker->save();
@@ -47,8 +47,8 @@ class SpeakerController extends Controller
 
         $speaker->name = $req["name"];
         $speaker->description = $req["description"];
-        $speaker->image_id = $req["image_id"];
-        $speaker->contact = $req["contact"];
+        $speaker->image_id = $req["image_id"] ?? null;
+        $speaker->contact = $req["contact"] ?? null;
 
         $speaker->save();
 

@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Http\Codes;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
@@ -46,5 +47,58 @@ class Timeslot extends Model
 
     public function stage() {
         return $this->belongsTo(Stage::class);
+    }
+
+    public function setPresentation(int $presentation_id) {
+        if (is_null($presentation_id)) {
+            $this->presentation_id = null;
+            return;
+        }
+
+        if ($this->presentation_id == $presentation_id) {
+            return;
+        }
+
+        $presentation = Presentation::find($presentation_id);
+
+        if ($presentation->timeslot()->exists()) {
+            response()->json([
+                'code' => Codes::OCCUPIED,
+                'message' => 'Presentation already in timeslot'
+            ])->throwResponse();
+        }
+
+        $this->presentation_id = $presentation->id;
+    }
+
+    public function getOverlaps() {
+        $this->load('stage');
+        $stage = $this->stage;
+
+        $overlaps = [];
+        $others = $stage->timeslots()->get()->all();
+        foreach ($others as $other) {
+            if ($this->id == $other->id) {
+                continue;
+            }
+
+            if ($this->start_at->lt($other->end_at) && $this->end_at->gt($other->start_at)) {
+                $overlaps[] = $other;
+            }
+        }
+
+        return $overlaps;
+    }
+
+    function validateOverlaps() {
+        $overlaps = $this->getOverlaps();
+
+        if (count($overlaps) > 0) {
+            response()->json([
+                'code' => Codes::OVERLAP,
+                'message' => "Timeslot overlaps others",
+                'overlaps' => $overlaps
+            ])->throwResponse();
+        }
     }
 }

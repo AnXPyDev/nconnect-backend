@@ -24,11 +24,13 @@ class HeadlinerController extends Controller
 
         $headliner->save();
 
-        return response()->json(['headliner' => $headliner->with(['speaker', 'stage'])]);
+        $headliner->load('speaker', 'stage');
+
+        return response()->json(['headliner' => $headliner]);
     }
 
     function index() {
-        return response()->json(['headliners' => Headliner::with(['speaker', 'stage'])]);
+        return response()->json(['headliners' => Headliner::with(['speaker', 'stage'])->get()]);
     }
 
     function edit() {
@@ -45,7 +47,9 @@ class HeadlinerController extends Controller
 
         $headliner->save();
 
-        return response()->json(['headliner' => $headliner->with(['speaker', 'stage'])]);
+        $headliner->load('speaker', 'stage');
+
+        return response()->json(['headliner' => $headliner]);
     }
 
     function delete() {
