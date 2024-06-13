@@ -39,7 +39,11 @@ class Presentation extends Model
         'end_date' => 'datetime'
     ];
 
-    public function timeslot() {
-        return $this->hasOne(Timeslot::class);
+    public function timeslots() {
+        return $this->hasMany(Timeslot::class);
+    }
+
+    public function speaker() {
+        return $this->belongsTo(Speaker::class);
     }
 }

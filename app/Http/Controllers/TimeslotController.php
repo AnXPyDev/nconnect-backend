@@ -32,6 +32,8 @@ class TimeslotController extends Controller
 
         $timeslot->save();
 
+        $timeslot->load('presentation');
+
         return response()->json([
             'timeslot' => $timeslot
         ]);
@@ -54,6 +56,8 @@ class TimeslotController extends Controller
         $timeslot->setPresentation($req['presentation_id'] ?? null);
 
         $timeslot->save();
+
+        $timeslot->load('presentation');
 
         return response()->json([
             'timeslot' => $timeslot

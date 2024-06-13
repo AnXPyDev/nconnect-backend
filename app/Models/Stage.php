@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -29,6 +29,6 @@ class Stage extends Model
     use HasFactory;
 
     public function timeslots() {
-        return $this->hasMany(Timeslot::class);
+        return $this->hasMany(Timeslot::class)->with('presentation');
     }
 }

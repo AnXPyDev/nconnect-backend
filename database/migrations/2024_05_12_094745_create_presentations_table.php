@@ -22,7 +22,7 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->text('long_description')->nullable();
             $table->foreignId('image_id')->nullable()->constrained('resources');
-
+            $table->boolean('generic')->default(false);
             $table->foreignIdFor(Speaker::class)->nullable();
         });
     }

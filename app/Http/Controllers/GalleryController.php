@@ -95,21 +95,7 @@ class GalleryController extends Controller
         $gallery = Gallery::find($req['id']);
         $resource = Resource::find($req['resource_id']);
 
-        if ($resource->type != 'image') {
-            return response()->json([
-                'code' => Codes::BADINPUT,
-                'message' => "Resource is not of type image"
-            ]);
-        }
-
-        $pivot = GalleryResourcePivot::where('gallery_id', $gallery->id)->where('resource_id', $resource->id);
-
-        if ($pivot->exists()) {
-            return response()->json([
-                'code' => Codes::OVERLAP,
-                'message' => 'Resource already assigned to gallery'
-            ]);
-        }
+        $gallery->addImage($resource);
 
         $pivot = GalleryResourcePivot::factory()->create([
             'gallery_id' => $gallery->id,

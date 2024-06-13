@@ -41,7 +41,8 @@ class PresentationController extends Controller
             'name' => 'required|string',
             'description' => 'string|nullable',
             'long_description' => 'string|nullable',
-            'image_id' => 'nullable|exists:resources,id'
+            'image_id' => 'nullable|exists:resources,id',
+            'speaker_id' => 'nullable|exists:speakers,id',
         ]);
 
         $presentation = Presentation::find($req["id"]);
@@ -50,6 +51,7 @@ class PresentationController extends Controller
         $presentation->description = $req["description"];
         $presentation->long_description = $req["long_description"];
         $presentation->image_id = $req["image_id"] ?? null;
+        $presentation->speaker_id = $req["speaker_id"] ?? null;
 
         $presentation->save();
 
@@ -64,7 +66,7 @@ class PresentationController extends Controller
         $available = [];
 
         foreach (Presentation::all() as $presentation) {
-            if (!$presentation->timeslot()->exists()) {
+            if ($presentation->generic || !$presentation->timeslot()->exists()) {
                 $available[] = $presentation;
             }
         }
@@ -109,6 +111,20 @@ class PresentationController extends Controller
 
         return response()->json([
             'speaker' => $presentation->speaker()
+        ]);
+    }
+
+    function events() {
+        $events = [];
+
+        foreach (Presentation::all() as $presentation) {
+            if (!$presentation->speaker()->exists()) {
+                $events[] = $presentation;
+            }
+        }
+
+        return response()->json([
+            'presentations' => $events
         ]);
     }
 

@@ -1,0 +1,92 @@
+[
+    {
+        "name": "Dalibor Cicman",
+        "description": "Zakladateľ a CEO GymBeam, od roku 2014 transformoval trh so športovou výživou na e-commerce platformu pôsobiacu v 16 krajinách s ročnými tržbami presahujúcimi 100 miliónov Eur.\nAko nositeľ ocenení Forbes \"30 pod 30\" a YT Podnikateľ roka 2024, Dalibor presadzuje význam dátovo riadeného prístupu, inovačnej kultúry a tímovej spolupráce pri budovaní značky.",
+        "image": "images/dalibor_cicman.jpg",
+        "metadata": {
+            "company": "GymBeam",
+            "subtitle": "Data-driven business",
+            "contact": {
+                "facebook": "https://www.facebook.com/dalibor.cicman",
+                "instagram": "https://www.instagram.com/daliborcicman",
+                "twitter": "https://x.com/DaliborCicman"
+            }
+        }
+    },
+    {
+        "name": "Peter Pšenák",
+        "description": "Som programátor so záľubou v JavaScripte a jeho typovo stabilnejšom \"mladšom bratovi\" TypeScripte. Rád sa zahrám aj s inými jazykmi vrátane Pythonu, R-ka a PHP-čka. Počas mojej niekoľkoročnej kariéry som pôsobil už v spoločnostiach ako Nay alebo PwC.\nAktuálne pôsobím ako technický riaditeľ spoločnosti Powerplay Studio, kde spríjemňujem život mojich programátorských kolegov mojimi \"jednoduchými\" zadaniami. Vo voľnom čase... programujem.",
+        "image": "images/peter_psenak.jpg",
+        "metadata": {
+            "company": "",
+            "subtitle": "Štruktúra a spoľahlivosť: Nástroj Lerna v monorepo architektúre",
+            "contact": {
+
+            }
+        }
+    },
+    {
+        "name": "Peter Urban",
+        "description": "Za 20 rokov som postupne prešiel od softvérového vývojára k vrcholovému manažmentu v softvérových a e-commerce firmách. Baví ma transformovať zložité biznisové problémy na elegantné softvérové produkty a dokážem zosúladiť obchodnú stratégiu s technológiou.\nMám zvyčajne na starosti technickú víziu a smerovanie veľkých spoločností, ale spoluzakladal som aj startupový inkubačný program v Košiciach. Budem rozprávať o e-commerce, keďže som CTO Dedolesu, predtým som bol tri roky CTO GymBeam-u.",
+        "image": "images/peter_urban.jpg",
+        "metadata": {
+            "company": "Dedoles"
+        }
+    },
+    {
+        "name": "Matúš Danóczi",
+        "description": "Skúsený softvérový inžinier špecializujúci sa na progresívny vývoj softvéru s dôrazom na analýzu veľkých dát.\nMomentálne vedie tím vývojárov v spoločnosti Muehlbauer, kde má na starosti manažment tímu, strategické plánovanie projektov a zavádzanie inovatívnych technologických riešení.",
+        "image": "images/matus_danoczi.jpg",
+        "metadata": {
+            "company": "MuehlBauer"
+        }
+    },
+    {
+        "name": "Tomáš Macháň",
+        "description": " Technology Engineer v IBM Client Engineering, a jeho tím sa špecializujú na optimalizáciu a integráciu backend systémov s využitím Cloud Pak for Integration (CP4I).\nIch práca je zameraná na poskytovanie efektívnych riešení pre spojenie rôznych systémov a aplikácií, čím umožňujú firmám lepšie využívať ich dátové zdroje a zvyšovať ich operatívnu efektivitu. S príkladmi z reálneho sveta od IBM a ďalších známych spoločností Tomáš a jeho tím ukazujú dôležitosť integrácií v dnešnom digitálnom svete.",
+        "image": "images/tomas_machan.jpg",
+        "metadata": {
+            "company": "IBM"
+        }
+    },
+    {
+        "name": "Jan Garček",
+        "description": "AI Engineer v tíme IBM Client Engineering, prináša svoje odborné znalosti do sféry generatívnej umelej inteligencie.\nS jeho tímom, ktorý pomáha klientom pri digitálnej transformácii prostredníctvom spolupráce, navrhovania a implementácie riešení využívajúcich pokročilé technológie IBM, sa Jan zameriava na využívanie AI modelov k dosiahnutiu cieľov klientov.",
+        "image": "images/jan_garcek.jpg",
+        "metadata": {
+            "company": "IBM"
+        }
+    },
+    {
+        "name": "Lukáš Kozelnický",
+        "description": "Lukáš pôsobí v Muzikeri od začiatku roku 2022 a teda od začiatku budovania nového dátového skladu. Deväť rokov sa venoval sieťam a DevOps a od roku 2020 sa viac venuje dátovej vede.\nMá skúsenosti s technológiami ako Python, Airflow, DBT či ClickHouse.",
+        "image": "images/lukas_kozelnicky.jpg",
+        "metadata": {
+            "company": "Muziker"
+        }
+    },
+    {
+        "name": "Patrik Malý",
+        "description": "Softvérový inžinier s viac ako desaťročnou praxou v oblasti moderného vývoja softvéru v ekosystéme Javy, ktorý sa vyznačuje nielen hlbokými technickými znalosťami, ale aj schopnosťou viesť a inšpirovať tím vývojárov.\nAktuálne zastáva pozíciu vedúceho skupiny vývojárov v spoločnosti UNIQA GSC Slovensko, kde je zodpovedný za riadenie tímu, strategické plánovanie projektov a implementáciu nových technologických riešení.",
+        "image": "images/patrik_maly.jpg",
+        "metadata": {
+            "company": "UNIQA GSC Slovensko"
+        }
+    },
+    {
+        "name": "Milan Moravčík",
+        "description": "Špecializujem sa na vývoj edukačného softvéru s pozíciou koordinátora pre rozvoj obchodu. Svojou prácou prepojuje technologické inovácie s potrebami vzdelávacích inštitúcií, čím prispievam k vytváraniu interaktívnych a prístupných učebných nástrojov.\nZameriavam sa na rozvoj obchodných stratégií a partnerstiev čo umožňuje efektívne nasadenie edukačných technológií a zlepšovanie učebných výsledkov na rôznych úrovniach vzdelávania.",
+        "image": "images/milan_moravcik.jpg",
+        "metadata": {
+            "company": "Edix"
+        }
+    },
+    {
+        "name": "Vojta Tuma",
+        "description": "Expert na využívanie umelé inteligencie v moderných dátových platformách. Zameriava sa na proces ako AI transformuje spracovanie a analýzu dát, čím umožňuje organizáciám efektívnejšie využívať svoje dátové zdroje.\nVenujem sa najnovším trendom v AI, ako sú strojové učenie a hlboké učenie, a ich aplikáciách v dátových platformách pre prediktívnu analýzu, automatizáciu a personalizáciu služieb.",
+        "image": "images/vojta_tuma.jpg",
+        "metadata": {
+            "company": "Keboola"
+        }
+    }
+]
