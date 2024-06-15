@@ -29,4 +29,8 @@ use Eloquent;
 class Admin extends AuthUser
 {
     use HasFactory, HasApiTokens;
+
+    protected $hidden = [
+        'password_hash', 'password_salt'
+    ];
 }

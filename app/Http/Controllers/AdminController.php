@@ -4,16 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Admin;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use Laravel\Sanctum\Sanctum;
+use App\Http\Codes;
 
-class AdminController
+class AdminController extends Controller
 {
     public function login(Request $request) {
-        $admin = Admin::all()->first();
+
+        $req = $this->validate([
+            'username' => 'required|exists:admins,username',
+            'password' => 'required|string'
+        ]);
+
+        $admin = Admin::where('username', $req['username'])->first();
+
+        if (!Hash::check($req['password'], $admin->password_hash)) {
+            return response()->json([
+                'code' => Codes::WRONGPASS,
+                'message' => "Wrong password"
+            ]);
+        }
 
         return response()->json([
             'token' => $admin->createToken("auth_token", ["admin"])->plainTextToken,
-            'data' => []
+            'data' => $admin
         ]);
     }
 
