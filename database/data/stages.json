@@ -1,4 +1,4 @@
 [
-    { "name": "AI&DATA STAGE" },
-    { "name": "SOFTDEV STAGE" }
+    { "sid": "aidata", "name": "AI&DATA STAGE" },
+    { "sid": "softdev", "name": "SOFTDEV STAGE" }
 ]

@@ -11,7 +11,16 @@
                 "instagram": "https://www.instagram.com/daliborcicman",
                 "twitter": "https://x.com/DaliborCicman"
             }
-        }
+        },
+        "headliner_stage_sid": "aidata",
+        "presentations": [
+            {
+                "name": "Data-driven business",
+                "description": "CEO GymBeam, odhalí, ako dátami riadený prístup a hĺbková analýza ovplyvnili rast jeho spoločnosti a zároveň sa podelí o 5 kritických chýb na ceste k úspechu, ponúkajúc cenné lekcie pre začínajúcich podnikateľov v digitálnom prostredí.",
+                "stage_sid": "aidata",
+                "timeslot_index": 3
+            }
+        ]
     },
     {
         "name": "Peter Pšenák",
@@ -23,7 +32,16 @@
             "contact": {
 
             }
-        }
+        },
+        "headliner_stage_sid": "softdev",
+        "presentations": [
+            {
+                "name": "Štruktúra a spoľahlivosť: Nástroj Lerna v monorepo architektúre",
+                "description": "Téma bude praktickou ukážkou z prostredia firmy Powerplay Studio, kde sme prostredníctvom jednoduchého nástroja Lerna optimalizovali vnútrofiremné procesy vývojárov a sprehľadnili tým náš codebase. Lerna je open-source nástroj na manažovanie monorepa, zabezpečujúci efektívny čas vývoja softvéru bez narušenia robustnosti štruktúry kódu.",
+                "stage_sid": "softdev",
+                "timeslot_index": 4
+            }
+        ]
     },
     {
         "name": "Peter Urban",
@@ -31,7 +49,15 @@
         "image": "images/peter_urban.jpg",
         "metadata": {
             "company": "Dedoles"
-        }
+        },
+        "presentations": [
+            {
+                "name": "E-commerce architektúra a composable commerce",
+                "description": "Viac ako desať rokov boli v svete e-commerce jasnou voľbou komplexné monolitické systémy, ktoré pokrývali každý aspekt online obchodu. Časy sa ale menia, a posledných pár rokov vidíme príklon k platformám orientovaným na architektúru, ktoré sú navrhnuté s dôrazom na API. Dôležitým princípom sa stáva composable commerce, teda možnosť spájať rôzne produkty do jednej platformy. Firmy sa môžu slobodnejšie rozhodovať, ktoré funkcie nakúpia ako hotové riešenia, do ktorých budú investovať vlastným vývojom - tak aby technológia priniesla najväčší prospech ich zákazníkom.",
+                "stage_sid": "softdev",
+                "timeslot_index": 6
+            }
+        ]
     },
     {
         "name": "Matúš Danóczi",
@@ -39,7 +65,15 @@
         "image": "images/matus_danoczi.jpg",
         "metadata": {
             "company": "MuehlBauer"
-        }
+        },
+        "presentations": [
+            {
+                "name": "Data mining v Big data",
+                "description": "Prehľad o technikách a metódach, ktoré sa využívajú na extrakciu užitočných informácií a vzorcov z rozsiahlych datasetov. Zameriava sa na výzvy spojené s prácou s Big Data, vrátane spracovania, analýzy a zabezpečenia dát. Účastníci sa dozvedia o moderných nástrojoch a algoritmoch používaných v praxi, čím získajú praktické znalosti pre efektívne využívanie dátových zdrojov vo svojich projektoch.",
+                "stage_sid": "aidata",
+                "timeslot_index": 7
+            }
+        ]
     },
     {
         "name": "Tomáš Macháň",
@@ -47,7 +81,15 @@
         "image": "images/tomas_machan.jpg",
         "metadata": {
             "company": "IBM"
-        }
+        },
+        "presentations": [
+            {
+                "name": "Konektivita a integrácia backend systémov s CP4I",
+                "description": "Technology Engineer v IBM Client Engineering tíme povedie prezentáciu na tému Konektivita a integrácia backend systémov s CP4I. Počas prezentácie sa dozviete, čo sú integrácie a prečo by akákoľvek firma nemala túto tému vynechať. Neoddeliteľnou súčasťou prezentácie budú príklady z reálneho sveta v podaní IBM či ďalších známych firiem.",
+                "stage_sid": "softdev",
+                "timeslot_index": 3
+            }
+        ]
     },
     {
         "name": "Jan Garček",
@@ -55,7 +97,15 @@
         "image": "images/jan_garcek.jpg",
         "metadata": {
             "company": "IBM"
-        }
+        },
+        "presentations": [
+            {
+                "name": "Watsonx - AI riesenie pre business",
+                "description": "Generatívna umelá inteligencia zažíva v posledných mesiacoch obrovský rozmach. Mnoho ľudí sa domnieva, že tieto modely disponujú neobmedzenými znalosťami. Jan Garček, AI Engineer z IBM Client Engineeringu, predstaví, ako firmy využívajú tieto modely na dosiahnutie svojich cieľov, objasní výhody, ale aj limity tejto technológie, a ukáže, že tieto modely nedokážu vyriešiť všetky naše problémy.",
+                "stage_sid": "aidata",
+                "timeslot_index": 4
+            }
+        ]
     },
     {
         "name": "Lukáš Kozelnický",
@@ -63,7 +113,15 @@
         "image": "images/lukas_kozelnicky.jpg",
         "metadata": {
             "company": "Muziker"
-        }
+        },
+        "presentations": [
+            {
+                "name": "Ako sme v Muzikeri postavili miliardový sklad!...dátový",
+                "description": "Výzva pripraviť sa na dátovú dobu stála aj pred nami v Muzikeri. Ako sme sa s touto výzvou popasovali, čo všetko to znamenalo pre nás, aké všetky prekážky sme museli prekonať, aké všetky veci nás vyfackali vám skusime rozpovedať v našom príbehu. Aby to nebola iba \"rozprávka\", povieme si viac do detailu o databázovej technologii Clickhouse, ktorá nám veľa z tých problémov pomohla poriešiť. A iné zase priniesla",
+                "stage_sid": "aidata",
+                "timeslot_index": "2"
+            }
+        ]
     },
     {
         "name": "Patrik Malý",
@@ -71,7 +129,15 @@
         "image": "images/patrik_maly.jpg",
         "metadata": {
             "company": "UNIQA GSC Slovensko"
-        }
+        },
+        "presentations": [
+            {
+                "name": "Java Virtual Threads - Je reaktívne programovanie mŕtve?",
+                "description": "Predstavenie novinky z JAVY JDK 21. Virtualne thready ponukaju uplne inu dimenziu priepustnosti a su jednoduche na spravu. Prinesie tato novinka revoluciu z pohladu rychlosti java aplikacii? Mozeme sa vzdat reactivnej paradigmy v Jave?",
+                "stage_sid": "softdev",
+                "timeslot_index": 2
+            }
+        ]
     },
     {
         "name": "Milan Moravčík",
@@ -79,7 +145,15 @@
         "image": "images/milan_moravcik.jpg",
         "metadata": {
             "company": "Edix"
-        }
+        },
+        "presentations": [
+            {
+                "name": "Vývoj edukačného softvéru v praxi",
+                "description": "Prednáška poskytne účastníkom hlboký pohľad do procesu vývoja softvéru určeného pre vzdelávací sektor. Zameriame sa na rôzne fázy vývojového cyklu, od počiatočného nápadu a analýzy potrieb, cez návrh a implementáciu, až po testovanie a nasadenie. Zdôrazníme význam používateľsky orientovaného dizajnu, interaktivity a prispôsobenia sa rôznym štýlom učenia.",
+                "stage_sid": "softdev",
+                "timeslot_index": 7
+            }
+        ]
     },
     {
         "name": "Vojta Tuma",
@@ -87,6 +161,14 @@
         "image": "images/vojta_tuma.jpg",
         "metadata": {
             "company": "Keboola"
-        }
+        },
+        "presentations": [
+            {
+                "name": "Ako moderné dátové platformy využívajú AI",
+                "description": "Prieskum inovatívnych spôsobov, akými súčasné technológie a umelá inteligencia (AI) integrované do spracovania a analýzy veľkých objemov dát. Rozoberá kľúčové koncepty, ako sú strojové učenie, hlboké učenie a automatizácia, a ich aplikácie v rámci dátových platform, čím poskytuje účastníkom prehľad o tom, ako AI zvyšuje efektivitu, presnosť a inovácie v oblasti dátových analýz. Prednáška ponúka prípadové štúdie a praktické príklady, ktoré ilustrujú, ako firmy využívajú tieto technológie na zlepšenie rozhodovania a zákazníckej skúsenosti. ",
+                "stage_sid": "aidata",
+                "timeslot_index": 6
+            }
+        ]
     }
 ]

@@ -9,6 +9,7 @@ use App\Models\Resource;
 use App\Models\Stage;
 use App\Models\Testimonial;
 use App\Models\Timeslot;
+use App\Models\Headliner;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Filesystem\Filesystem;
@@ -26,38 +27,56 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $faker = fake();
-
-        $stages_data = json_decode(File::get("database/data/stages.json"), true);
-
-        $stages = Stage::factory()->createMany($stages_data);
-
+        
         $events_data = json_decode(File::get("database/data/events.json"), true);
-        $events = Presentation::factory()->createMany($events_data);
+
+        $events = [];
+
+        foreach ($events_data as $event_data) {
+            $sid = $event_data['sid'];
+            unset($event_data['sid']);
+            $events[$sid] = Presentation::factory()->create($event_data);
+        }
+
 
         $timeslots_data = json_decode(File::get("database/data/timeslots.json"), true);
-        foreach ($stages as $stage) {
-            $timeslots = $stage->timeslots()->createMany($timeslots_data);
-            $timeslots[0]->presentation_id = $events[0]->id;
-            $timeslots[0]->save();
-            $timeslots[1]->presentation_id = $events[1]->id;
-            $timeslots[1]->save();
-            $timeslots[5]->presentation_id = $events[2]->id;
-            $timeslots[5]->save();
-            $timeslots[8]->presentation_id = $events[3]->id;
-            $timeslots[8]->save();
+        $stages_data = json_decode(File::get("database/data/stages.json"), true);
+
+        $stages = [];
+
+        foreach ($stages_data as $stage_data) {
+            $sid = $stage_data['sid'];
+            unset($stage_data['sid']);
+            $stage = Stage::factory()->create($stage_data);
+            $stages[$sid] = $stage;
+
+            foreach ($timeslots_data as $timeslot_data) {
+                $event_sid = $timeslot_data['event_sid'] ?? null;
+                unset($timeslot_data['event_sid']);
+
+                $timeslot = $stage->timeslots()->create($timeslot_data);
+
+                if (!is_null($event_sid)) {
+                    $timeslot->presentation_id = $events[$event_sid]->id;
+                    $timeslot->save();
+                }
+            }
         }
 
         $speakers_gallery = Gallery::factory()->create([
-            'name' => 'speakers'
+            'name' => 'Speakers'
         ]);
 
         $speakers_data = json_decode(File::get("database/data/speakers.json"), true);
         foreach ($speakers_data as $speaker_data) {
             $image_path = $speaker_data['image'];
-            unset($speaker_data['image']);
+            $presentations_data = $speaker_data['presentations'] ?? [];
+            $headliner_stage_sid = $speaker_data['headliner_stage_sid'] ?? null;
+            unset($speaker_data['presentations'], $speaker_data['image'], $speaker_data['headliner_stage_sid']);
+
             $speaker = Speaker::factory()->create($speaker_data);
             $image = Resource::factory()->create([
-                'name' => $speaker_data['name'],
+                'name' => pathinfo($image_path, PATHINFO_FILENAME),
                 'path' => $image_path,
                 'type' => 'image'
             ]);
@@ -65,6 +84,47 @@ class DatabaseSeeder extends Seeder
 
             $speaker->image_id = $image->id;
             $speaker->save();
+
+            foreach ($presentations_data as $presentation_data) {
+                $stage_sid = $presentation_data['stage_sid'];
+                $timeslot_index = $presentation_data['timeslot_index'];
+                unset($presentation_data['stage_sid'], $presentation_data['timeslot_index']);
+
+                $presentation = $speaker->presentations()->create($presentation_data);
+
+                $timeslot = $stages[$stage_sid]->timeslots()->get()[$timeslot_index];
+                $timeslot->presentation_id = $presentation->id;
+                $timeslot->save();
+            }
+
+            if (!is_null($headliner_stage_sid)) {
+                Headliner::factory()->create([
+                    'stage_id' => $stages[$headliner_stage_sid]->id,
+                    'speaker_id' => $speaker->id
+                ]);
+            }
         }
+
+        $testimonials_gallery = Gallery::factory()->create([
+            'name' => 'Testimonials'
+        ]);
+
+        $testimonials_data = json_decode(File::get("database/data/testimonials.json"), true);
+        foreach ($testimonials_data as $testimonial_data) {
+            $image_path = $testimonial_data['image'];
+            unset($testimonial_data['image']);
+
+            $testimonial = testimonial::factory()->create($testimonial_data);
+            $image = Resource::factory()->create([
+                'name' => pathinfo($image_path, PATHINFO_FILENAME),
+                'path' => $image_path,
+                'type' => 'image'
+            ]);
+            $testimonials_gallery->addImage($image);
+
+            $testimonial->image_id = $image->id;
+            $testimonial->save();
+        }
+
     }
 }

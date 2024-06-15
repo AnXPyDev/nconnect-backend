@@ -66,7 +66,7 @@ class PresentationController extends Controller
         $available = [];
 
         foreach (Presentation::all() as $presentation) {
-            if ($presentation->generic || !$presentation->timeslot()->exists()) {
+            if ($presentation->generic || !$presentation->timeslots()->exists()) {
                 $available[] = $presentation;
             }
         }
@@ -75,7 +75,10 @@ class PresentationController extends Controller
             $timeslot = Timeslot::find($req['timeslot_id']);
             $presentation = $timeslot->presentation();
             if ($presentation->exists()) {
-                $available[] = $presentation->first();
+                $p = $presentation->first();
+                if (!$p->generic) {
+                    $available[] = $p;
+                }
             }
         }
 

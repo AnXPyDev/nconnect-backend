@@ -1,0 +1,22 @@
+[
+    {
+        "author": "Dávid Držík - Doktorand FPVaI UKF",
+        "description": "Oceňujem, že vzniká nová iniciativá spojiť časť akademickej obce v podobe študentov a súkromný sektor v našom regióne",
+        "image": "images/david_drzik.png"
+    },
+    {
+        "author": "Richard Krupička - Head of Recruitment v Synculario",
+        "description": "Je vždy dobré, keď sa aktivizuje IT komunita aj v oblastaich mimo Bratislavi.",
+        "image": "images/richard_krupicka.jpg"
+    },
+    {
+        "author": "Dávid Frťala - Senior Full Stack Engineer",
+        "description": "Som veľmi rád, že vidím prvé náznaky kreovania aktívnej IT komunity zameranej nie len na B2B formát.",
+        "image": "images/david_frtala.jpg"
+    },
+    {
+        "author": "Martin Drlík - prodekan FPVaI UKF",
+        "description": "Táto konferencia predstavuje vynikajúcu príležitosť pre našich študentov, aby sa nielen zoznámili s najnovšími trendmi v oblasti informatiky, ale aj naviazali cenné kontakty s profesionálmi z praxe.",
+        "image": "images/martin_drlik.jpg"
+    }
+]

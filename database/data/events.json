@@ -1,20 +1,24 @@
 [
     {
+        "sid": "reg",
         "name": "Registrácia",
         "generic": true,
         "description": "Registrácia je prvým a zásadným krokom na každej konferencii. Táto sekcia je navrhnutá tak, aby privítala všetkých účastníkov a poskytla im všetky potrebné informácie a materiály pre úspešný začiatok konferencie."
     },
     {
+        "sid": "opn",
         "name": "Otvorenie",
         "generic": true,
         "description": "Zahájenie oficiálneho programu konferenice."
     },
     {
+        "sid": "coffee",
         "name": "Coffee Break",
         "generic": true,
         "description": "Prestávka na občerstvenie."
     },
     {
+        "sid": "end",
         "name": "Ukončenie a Networking",
         "generic": true,
         "description": "Ukončenie konferencie je plánované ako dynamické zakončenie plné príležitostí pre networking a zdieľanie zážitkov z celého podujatia."

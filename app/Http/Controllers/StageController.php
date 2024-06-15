@@ -61,6 +61,23 @@ class StageController extends Controller
         $stage = Stage::find($req["id"]);
 
         return response()->json(['timeslots' => $stage->timeslots()->get()]);
+    }
+    
+    function timeslotsplus() {
+        $req = $this->validate([
+            'id' => 'required|exists:stages,id'
+        ]);
 
+        $stage = Stage::find($req["id"]);
+
+        $timeslots = $stage->timeslots()->get();
+
+        foreach ($timeslots as $timeslot) {
+            if (!is_null($timeslot->presentation)) {
+                $timeslot->presentation->load('speaker');
+            }
+        }
+
+        return response()->json(['timeslots' => $timeslots]);
     }
 }

@@ -66,6 +66,7 @@ Route::controller(StageController::class)->prefix("stage")->group(function () {
     });
     Route::post("/index", "index");
     Route::post("/timeslots", "timeslots");
+    Route::post("/timeslotsplus", "timeslotsplus");
 });
 
 Route::controller(PresentationController::class)->prefix("presentation")->group(function () {
