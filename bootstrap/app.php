@@ -17,14 +17,7 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'abilities' => CheckAbilities::class,
             'ability' => CheckForAnyAbility::class,
-        ]);
-
-        $middleware->appendToGroup('auth:admin', [
-            \App\Http\Middleware\AuthAdmin::class
-        ]);
-
-        $middleware->appendToGroup('auth:resource', [
-            \App\Http\Middleware\AuthResource::class
+            'authx' => \App\Http\Middleware\AuthX::class
         ]);
     })
     ->withExceptions(function (Exceptions $exceptions) {

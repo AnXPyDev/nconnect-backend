@@ -1,0 +1,21 @@
+{
+    "date": "2025-3-14",
+    "state": 1,
+    "subtitle": "Spájame IT komunity",
+    "presentation_title": "nCONNECT25",
+    "presentation_subtitle": "TECH KONFERENCIA PRE ŠTUDENTOV V NITRE",
+    "about_title": "Pár slov o konferencii nConnect",
+    "about_text": "Po mnohých rokoch premýšľania a plánovania sme vytvorili nConnect, jedinečnú udalosť v Nitre, ktorá spája študentov IT a popredné firmy z tohto dynamického odvetvia. Konferencia nConnect nadväzuje na dlhoročnú tradíciu formátu \"IT v praxi\" Fakulty prírodných vied a informatiky UKF v Nitre. Táto iniciatíva je mostom medzi novou generáciou talentov a skúsenými profesionálmi, ktorý poskytuje fórum pre vzájomnú výmenu myšlienok a inšpirácií. Naše poslanie bolo jasné: vyplniť medzeru v regionálnej komunikácii a spolupráci v IT a nConnect je hrdým výsledkom tejto vízie.",
+    "location_city": "Nitra",
+    "location_name": "ŠTUDENTSKÉ CENTRUM UKF",
+    "location_full": "Študentské centrum UKF Dražovská 2, Nitra",
+    "location_link": "https://maps.app.goo.gl/rgn9wBvWAbyMwy9W8",
+    "location_map_embed": "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2653.0460448754884!2d18.093272176737322!3d48.32119593835983!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x476b3f15415e707f%3A0xf78375abe8093dab!2s%C5%A0tudentsk%C3%A9%20centrum%20UKF%20v%20Nitre!5e0!3m2!1ssk!2ssk!4v1718833495651!5m2!1ssk!2ssk",
+    "contact": {
+        "phone": "+421 902 170 744",
+        "email": "info@nconnect.sk",
+        "facebook": "https://www.facebook.com/nconnectsk/",
+        "instagram": "https://www.instagram.com/nconnect_sk/",
+        "linkedin": "https://www.linkedin.com/company/nconnectsk/"
+    }
+}

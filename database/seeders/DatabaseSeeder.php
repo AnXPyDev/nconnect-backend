@@ -2,12 +2,16 @@
 
 namespace Database\Seeders;
 
+use App\Models\Conference;
 use App\Models\Presentation;
 use App\Models\Speaker;
 use App\Models\Gallery;
 use App\Models\Resource;
+use App\Models\Sponsor;
 use App\Models\Stage;
 use App\Models\Testimonial;
+use App\Models\Organizer;
+use App\Models\Qna;
 use App\Models\Timeslot;
 use App\Models\Headliner;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -20,6 +24,15 @@ class DatabaseSeeder extends Seeder
     /**
      * Run the database seeds.
      */
+
+    function makeImage($path) {
+        return Resource::factory()->create([
+            'name' => pathinfo($path, PATHINFO_FILENAME),
+            'path' => $path,
+            'type' => 'image'
+        ]);
+    }
+
     public function run(): void
     {
         $this->call([
@@ -27,7 +40,10 @@ class DatabaseSeeder extends Seeder
         ]);
 
         $faker = fake();
-        
+
+        $conference_data = json_decode(File::get("database/data/conference.json"), true);
+        Conference::factory()->create($conference_data);
+
         $events_data = json_decode(File::get("database/data/events.json"), true);
 
         $events = [];
@@ -75,11 +91,7 @@ class DatabaseSeeder extends Seeder
             unset($speaker_data['presentations'], $speaker_data['image'], $speaker_data['headliner_stage_sid']);
 
             $speaker = Speaker::factory()->create($speaker_data);
-            $image = Resource::factory()->create([
-                'name' => pathinfo($image_path, PATHINFO_FILENAME),
-                'path' => $image_path,
-                'type' => 'image'
-            ]);
+            $image = $this->makeImage($image_path);
             $speakers_gallery->addImage($image);
 
             $speaker->image_id = $image->id;
@@ -115,16 +127,48 @@ class DatabaseSeeder extends Seeder
             unset($testimonial_data['image']);
 
             $testimonial = testimonial::factory()->create($testimonial_data);
-            $image = Resource::factory()->create([
-                'name' => pathinfo($image_path, PATHINFO_FILENAME),
-                'path' => $image_path,
-                'type' => 'image'
-            ]);
+            $image = $this->makeImage($image_path);
             $testimonials_gallery->addImage($image);
 
             $testimonial->image_id = $image->id;
             $testimonial->save();
         }
 
+        $sponsors_gallery = Gallery::factory()->create([
+            'name' => 'Sponsors'
+        ]);
+
+        $sponsors_data = json_decode(File::get("database/data/sponsors.json"), true);
+        foreach ($sponsors_data as $sponsor_data) {
+            $image_path = $sponsor_data['image'];
+            unset($sponsor_data['image']);
+
+            $sponsor = Sponsor::factory()->create($sponsor_data);
+            $image = $this->makeImage($image_path);
+            $sponsors_gallery->addImage($image);
+
+            $sponsor->image_id = $image->id;
+            $sponsor->save();
+        }
+
+        $organizers_gallery = Gallery::factory()->create([
+            'name' => 'Organizers'
+        ]);
+
+        $organizers_data = json_decode(File::get("database/data/organizers.json"), true);
+        foreach ($organizers_data as $organizer_data) {
+            $image_path = $organizer_data['image'];
+            unset($organizer_data['image']);
+
+            $organizer = Organizer::factory()->create($organizer_data);
+            $image = $this->makeImage($image_path);
+            $organizers_gallery->addImage($image);
+
+            $organizer->image_id = $image->id;
+            $organizer->save();
+        }
+
+        $qnas_data = json_decode(File::get("database/data/qnas.json"), true);
+        Qna::factory()->createMany($qnas_data);
     }
 }

@@ -16,7 +16,8 @@ class AdminSeeder extends Seeder
     {
         Admin::factory()->create([
             'username' => 'root',
-            'password_hash' => Hash::make('password123')
+            'password_hash' => Hash::make('password123'),
+            'priv' => Admin::MAXPRIV
         ]);
     }
 }

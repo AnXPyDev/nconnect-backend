@@ -16,7 +16,9 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->json('metadata')->default("{}");
+            $table->string('subtitle')->nullable();
+            $table->json('company')->nullable();
+            $table->json('contact')->default('{}');
 
             $table->foreignId('image_id')->nullable()->constrained('resources');
         });

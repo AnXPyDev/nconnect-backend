@@ -31,7 +31,8 @@ class Speaker extends Model
     use HasFactory;
 
     protected $casts = [
-        'metadata' => 'array',
+        'contact' => 'array',
+        'company' => 'array'
     ];
 
     public function presentations() {

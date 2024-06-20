@@ -10,7 +10,7 @@ use Laravel\Sanctum\HasApiTokens;
 use Eloquent;
 
 /**
- * 
+ *
  *
  * @property int $id
  * @property \Illuminate\Support\Carbon|null $created_at
@@ -28,9 +28,24 @@ use Eloquent;
  */
 class Admin extends AuthUser
 {
+
+    public const PRIVS = [
+        'priv-view',
+        'priv-edit',
+        'priv-super'
+    ];
+
+    public const MAXPRIV = 2;
+
     use HasFactory, HasApiTokens;
 
     protected $hidden = [
         'password_hash', 'password_salt'
     ];
+
+    public function tokenWithPriv() {
+        return $this->createToken('auth_token',
+            ['admin', ...array_slice(self::PRIVS, 0, $this->priv + 1)]
+        );
+    }
 }

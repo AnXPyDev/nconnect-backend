@@ -49,7 +49,7 @@ class Timeslot extends Model
         return $this->belongsTo(Stage::class);
     }
 
-    public function setPresentation(int $presentation_id) {
+    public function setPresentation($presentation_id) {
         if (is_null($presentation_id)) {
             $this->presentation_id = null;
             return;

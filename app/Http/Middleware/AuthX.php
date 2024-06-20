@@ -12,7 +12,7 @@ use Illuminate\Validation\UnauthorizedException;
 use Symfony\Component\HttpFoundation\Response;
 use Throwable;
 
-class AuthAdmin
+class AuthX
 {
     protected function makeUnauthorizedResponse() {
         return response()->json([
@@ -31,24 +31,23 @@ class AuthAdmin
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    final public function handle(Request $request, Closure $next): Response
+    final public function handle(Request $request, Closure $next, string ...$abilities): Response
     {
         Auth::shouldUse('sanctum');
 
         $user = $request->user();
 
         if (is_null($user)) {
-            return response()->json([
-                'code' => Codes::NOAUTH,
-                'message' => "Unauthorized"
-            ]);
+            return $this->makeUnauthorizedResponse();
         }
 
-        if (!$user->tokenCan('admin')) {
-            return response()->json([
-                'code' => Codes::NOPRIV,
-                'message' => "Not admin"
-            ]);
+        foreach ($abilities as $ability) {
+            if (!$user->tokenCan($ability)) {
+                return response()->json([
+                    'code' => Codes::NOPRIV,
+                    'message' => "Not " . $ability
+                ]);
+            }
         }
 
         return $next($request);

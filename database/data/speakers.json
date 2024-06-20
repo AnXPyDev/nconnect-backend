@@ -3,23 +3,22 @@
         "name": "Dalibor Cicman",
         "description": "Zakladateľ a CEO GymBeam, od roku 2014 transformoval trh so športovou výživou na e-commerce platformu pôsobiacu v 16 krajinách s ročnými tržbami presahujúcimi 100 miliónov Eur.\nAko nositeľ ocenení Forbes \"30 pod 30\" a YT Podnikateľ roka 2024, Dalibor presadzuje význam dátovo riadeného prístupu, inovačnej kultúry a tímovej spolupráce pri budovaní značky.",
         "image": "images/dalibor_cicman.jpg",
-        "metadata": {
-            "company": {
-                "name": "GymBeam",
-                "link": "https://gymbeam.sk"
-            },
-            "subtitle": "Data-driven business",
-            "contact": {
-                "facebook": "https://www.facebook.com/dalibor.cicman",
-                "instagram": "https://www.instagram.com/daliborcicman",
-                "twitter": "https://x.com/DaliborCicman"
-            }
+        "company": {
+            "name": "GymBeam",
+            "link": "https://gymbeam.sk"
+        },
+        "subtitle": "Data-driven business",
+        "contact": {
+            "facebook": "https://www.facebook.com/dalibor.cicman",
+            "instagram": "https://www.instagram.com/daliborcicman",
+            "twitter": "https://x.com/DaliborCicman"
         },
         "headliner_stage_sid": "aidata",
         "presentations": [
             {
                 "name": "Data-driven business",
                 "description": "CEO GymBeam, odhalí, ako dátami riadený prístup a hĺbková analýza ovplyvnili rast jeho spoločnosti a zároveň sa podelí o 5 kritických chýb na ceste k úspechu, ponúkajúc cenné lekcie pre začínajúcich podnikateľov v digitálnom prostredí.",
+                "capacity": 50,
                 "stage_sid": "aidata",
                 "timeslot_index": 3
             }
@@ -29,21 +28,20 @@
         "name": "Peter Pšenák",
         "description": "Som programátor so záľubou v JavaScripte a jeho typovo stabilnejšom \"mladšom bratovi\" TypeScripte. Rád sa zahrám aj s inými jazykmi vrátane Pythonu, R-ka a PHP-čka. Počas mojej niekoľkoročnej kariéry som pôsobil už v spoločnostiach ako Nay alebo PwC.\nAktuálne pôsobím ako technický riaditeľ spoločnosti Powerplay Studio, kde spríjemňujem život mojich programátorských kolegov mojimi \"jednoduchými\" zadaniami. Vo voľnom čase... programujem.",
         "image": "images/peter_psenak.jpg",
-        "metadata": {
-            "company": {
-                "name": "PowerPlay Studio",
-                "link": "https://www.powerplay.studio/"
-            },
-            "subtitle": "Štruktúra a spoľahlivosť: Nástroj Lerna v monorepo architektúre",
-            "contact": {
+        "company": {
+            "name": "PowerPlay Studio",
+            "link": "https://www.powerplay.studio/"
+        },
+        "subtitle": "Štruktúra a spoľahlivosť: Nástroj Lerna v monorepo architektúre",
+        "contact": {
 
-            }
         },
         "headliner_stage_sid": "softdev",
         "presentations": [
             {
                 "name": "Štruktúra a spoľahlivosť: Nástroj Lerna v monorepo architektúre",
                 "description": "Téma bude praktickou ukážkou z prostredia firmy Powerplay Studio, kde sme prostredníctvom jednoduchého nástroja Lerna optimalizovali vnútrofiremné procesy vývojárov a sprehľadnili tým náš codebase. Lerna je open-source nástroj na manažovanie monorepa, zabezpečujúci efektívny čas vývoja softvéru bez narušenia robustnosti štruktúry kódu.",
+                "capacity": 50,
                 "stage_sid": "softdev",
                 "timeslot_index": 4
             }
@@ -53,19 +51,18 @@
         "name": "Peter Urban",
         "description": "Za 20 rokov som postupne prešiel od softvérového vývojára k vrcholovému manažmentu v softvérových a e-commerce firmách. Baví ma transformovať zložité biznisové problémy na elegantné softvérové produkty a dokážem zosúladiť obchodnú stratégiu s technológiou.\nMám zvyčajne na starosti technickú víziu a smerovanie veľkých spoločností, ale spoluzakladal som aj startupový inkubačný program v Košiciach. Budem rozprávať o e-commerce, keďže som CTO Dedolesu, predtým som bol tri roky CTO GymBeam-u.",
         "image": "images/peter_urban.jpg",
-        "metadata": {
-            "company": {
-                "name": "Dedoles",
-                "link": "https://dedoles.sk"
-            },
-            "contact": {
-                "linkedin": "https://sk.linkedin.com/in/peter-urban"
-            }
+        "company": {
+            "name": "Dedoles",
+            "link": "https://dedoles.sk"
+        },
+        "contact": {
+            "linkedin": "https://sk.linkedin.com/in/peter-urban"
         },
         "presentations": [
             {
                 "name": "E-commerce architektúra a composable commerce",
                 "description": "Viac ako desať rokov boli v svete e-commerce jasnou voľbou komplexné monolitické systémy, ktoré pokrývali každý aspekt online obchodu. Časy sa ale menia, a posledných pár rokov vidíme príklon k platformám orientovaným na architektúru, ktoré sú navrhnuté s dôrazom na API. Dôležitým princípom sa stáva composable commerce, teda možnosť spájať rôzne produkty do jednej platformy. Firmy sa môžu slobodnejšie rozhodovať, ktoré funkcie nakúpia ako hotové riešenia, do ktorých budú investovať vlastným vývojom - tak aby technológia priniesla najväčší prospech ich zákazníkom.",
+                "capacity": 50,
                 "stage_sid": "softdev",
                 "timeslot_index": 6
             }
@@ -75,15 +72,14 @@
         "name": "Matúš Danóczi",
         "description": "Skúsený softvérový inžinier špecializujúci sa na progresívny vývoj softvéru s dôrazom na analýzu veľkých dát.\nMomentálne vedie tím vývojárov v spoločnosti Muehlbauer, kde má na starosti manažment tímu, strategické plánovanie projektov a zavádzanie inovatívnych technologických riešení.",
         "image": "images/matus_danoczi.jpg",
-        "metadata": {
-            "company": {
-                "name": "MuehlBauer"
-            }
+        "company": {
+            "name": "MuehlBauer"
         },
         "presentations": [
             {
                 "name": "Data mining v Big data",
                 "description": "Prehľad o technikách a metódach, ktoré sa využívajú na extrakciu užitočných informácií a vzorcov z rozsiahlych datasetov. Zameriava sa na výzvy spojené s prácou s Big Data, vrátane spracovania, analýzy a zabezpečenia dát. Účastníci sa dozvedia o moderných nástrojoch a algoritmoch používaných v praxi, čím získajú praktické znalosti pre efektívne využívanie dátových zdrojov vo svojich projektoch.",
+                "capacity": 50,
                 "stage_sid": "aidata",
                 "timeslot_index": 7
             }
@@ -93,18 +89,17 @@
         "name": "Tomáš Macháň",
         "description": " Technology Engineer v IBM Client Engineering, a jeho tím sa špecializujú na optimalizáciu a integráciu backend systémov s využitím Cloud Pak for Integration (CP4I).\nIch práca je zameraná na poskytovanie efektívnych riešení pre spojenie rôznych systémov a aplikácií, čím umožňujú firmám lepšie využívať ich dátové zdroje a zvyšovať ich operatívnu efektivitu. S príkladmi z reálneho sveta od IBM a ďalších známych spoločností Tomáš a jeho tím ukazujú dôležitosť integrácií v dnešnom digitálnom svete.",
         "image": "images/tomas_machan.jpg",
-        "metadata": {
-            "company": {
-                "name": "IBM"
-            },
-            "contact": {
-                "linkedin": "https://cz.linkedin.com/in/tomas-machan"
-            }
+        "company": {
+            "name": "IBM"
+        },
+        "contact": {
+            "linkedin": "https://cz.linkedin.com/in/tomas-machan"
         },
         "presentations": [
             {
                 "name": "Konektivita a integrácia backend systémov s CP4I",
                 "description": "Technology Engineer v IBM Client Engineering tíme povedie prezentáciu na tému Konektivita a integrácia backend systémov s CP4I. Počas prezentácie sa dozviete, čo sú integrácie a prečo by akákoľvek firma nemala túto tému vynechať. Neoddeliteľnou súčasťou prezentácie budú príklady z reálneho sveta v podaní IBM či ďalších známych firiem.",
+                "capacity": 50,
                 "stage_sid": "softdev",
                 "timeslot_index": 3
             }
@@ -114,18 +109,17 @@
         "name": "Jan Garček",
         "description": "AI Engineer v tíme IBM Client Engineering, prináša svoje odborné znalosti do sféry generatívnej umelej inteligencie.\nS jeho tímom, ktorý pomáha klientom pri digitálnej transformácii prostredníctvom spolupráce, navrhovania a implementácie riešení využívajúcich pokročilé technológie IBM, sa Jan zameriava na využívanie AI modelov k dosiahnutiu cieľov klientov.",
         "image": "images/jan_garcek.jpg",
-        "metadata": {
-            "company": {
-                "name": "IBM"
-            },
-            "contact": {
-                "linkedin": "https://cz.linkedin.com/in/jan-gar%C4%8Dek-174209199"
-            }
+        "company": {
+            "name": "IBM"
+        },
+        "contact": {
+            "linkedin": "https://cz.linkedin.com/in/jan-gar%C4%8Dek-174209199"
         },
         "presentations": [
             {
                 "name": "Watsonx - AI riesenie pre business",
                 "description": "Generatívna umelá inteligencia zažíva v posledných mesiacoch obrovský rozmach. Mnoho ľudí sa domnieva, že tieto modely disponujú neobmedzenými znalosťami. Jan Garček, AI Engineer z IBM Client Engineeringu, predstaví, ako firmy využívajú tieto modely na dosiahnutie svojich cieľov, objasní výhody, ale aj limity tejto technológie, a ukáže, že tieto modely nedokážu vyriešiť všetky naše problémy.",
+                "capacity": 50,
                 "stage_sid": "aidata",
                 "timeslot_index": 4
             }
@@ -135,16 +129,15 @@
         "name": "Lukáš Kozelnický",
         "description": "Lukáš pôsobí v Muzikeri od začiatku roku 2022 a teda od začiatku budovania nového dátového skladu. Deväť rokov sa venoval sieťam a DevOps a od roku 2020 sa viac venuje dátovej vede.\nMá skúsenosti s technológiami ako Python, Airflow, DBT či ClickHouse.",
         "image": "images/lukas_kozelnicky.jpg",
-        "metadata": {
-            "company": {
-                "name": "Muziker",
-                "link": "https://www.muziker.sk/"
-            }
+        "company": {
+            "name": "Muziker",
+            "link": "https://www.muziker.sk/"
         },
         "presentations": [
             {
                 "name": "Ako sme v Muzikeri postavili miliardový sklad!...dátový",
                 "description": "Výzva pripraviť sa na dátovú dobu stála aj pred nami v Muzikeri. Ako sme sa s touto výzvou popasovali, čo všetko to znamenalo pre nás, aké všetky prekážky sme museli prekonať, aké všetky veci nás vyfackali vám skusime rozpovedať v našom príbehu. Aby to nebola iba \"rozprávka\", povieme si viac do detailu o databázovej technologii Clickhouse, ktorá nám veľa z tých problémov pomohla poriešiť. A iné zase priniesla",
+                "capacity": 50,
                 "stage_sid": "aidata",
                 "timeslot_index": "2"
             }
@@ -154,19 +147,18 @@
         "name": "Patrik Malý",
         "description": "Softvérový inžinier s viac ako desaťročnou praxou v oblasti moderného vývoja softvéru v ekosystéme Javy, ktorý sa vyznačuje nielen hlbokými technickými znalosťami, ale aj schopnosťou viesť a inšpirovať tím vývojárov.\nAktuálne zastáva pozíciu vedúceho skupiny vývojárov v spoločnosti UNIQA GSC Slovensko, kde je zodpovedný za riadenie tímu, strategické plánovanie projektov a implementáciu nových technologických riešení.",
         "image": "images/patrik_maly.jpg",
-        "metadata": {
-            "company": {
-                "name": "UNIQA GSC Slovensko",
-                "link": "https://www.uniqa-gsc.sk/"
-            },
-            "contact": {
-                "linkedin": "https://sk.linkedin.com/in/patrik-mal%C3%BD-69502b10a"
-            }
+        "company": {
+            "name": "UNIQA GSC Slovensko",
+            "link": "https://www.uniqa-gsc.sk/"
+        },
+        "contact": {
+            "linkedin": "https://sk.linkedin.com/in/patrik-mal%C3%BD-69502b10a"
         },
         "presentations": [
             {
                 "name": "Java Virtual Threads - Je reaktívne programovanie mŕtve?",
                 "description": "Predstavenie novinky z JAVY JDK 21. Virtualne thready ponukaju uplne inu dimenziu priepustnosti a su jednoduche na spravu. Prinesie tato novinka revoluciu z pohladu rychlosti java aplikacii? Mozeme sa vzdat reactivnej paradigmy v Jave?",
+                "capacity": 50,
                 "stage_sid": "softdev",
                 "timeslot_index": 2
             }
@@ -176,18 +168,17 @@
         "name": "Milan Moravčík",
         "description": "Špecializujem sa na vývoj edukačného softvéru s pozíciou koordinátora pre rozvoj obchodu. Svojou prácou prepojuje technologické inovácie s potrebami vzdelávacích inštitúcií, čím prispievam k vytváraniu interaktívnych a prístupných učebných nástrojov.\nZameriavam sa na rozvoj obchodných stratégií a partnerstiev čo umožňuje efektívne nasadenie edukačných technológií a zlepšovanie učebných výsledkov na rôznych úrovniach vzdelávania.",
         "image": "images/milan_moravcik.jpg",
-        "metadata": {
-            "company": {
-                "name": "Edix"
-            },
-            "contact": {
-                "linkedin": "https://sk.linkedin.com/in/milan-morav%C4%8D%C3%ADk-45339613a"
-            }
+        "company": {
+            "name": "Edix"
+        },
+        "contact": {
+            "linkedin": "https://sk.linkedin.com/in/milan-morav%C4%8D%C3%ADk-45339613a"
         },
         "presentations": [
             {
                 "name": "Vývoj edukačného softvéru v praxi",
                 "description": "Prednáška poskytne účastníkom hlboký pohľad do procesu vývoja softvéru určeného pre vzdelávací sektor. Zameriame sa na rôzne fázy vývojového cyklu, od počiatočného nápadu a analýzy potrieb, cez návrh a implementáciu, až po testovanie a nasadenie. Zdôrazníme význam používateľsky orientovaného dizajnu, interaktivity a prispôsobenia sa rôznym štýlom učenia.",
+                "capacity": 50,
                 "stage_sid": "softdev",
                 "timeslot_index": 7
             }
@@ -197,19 +188,18 @@
         "name": "Vojta Tůma",
         "description": "Expert na využívanie umelé inteligencie v moderných dátových platformách. Zameriava sa na proces ako AI transformuje spracovanie a analýzu dát, čím umožňuje organizáciám efektívnejšie využívať svoje dátové zdroje.\nVenujem sa najnovším trendom v AI, ako sú strojové učenie a hlboké učenie, a ich aplikáciách v dátových platformách pre prediktívnu analýzu, automatizáciu a personalizáciu služieb.",
         "image": "images/vojta_tuma.jpg",
-        "metadata": {
-            "company": {
-                "name": "Keboola",
-                "link": "https://www.keboola.com/"
-            },
-            "contact": {
-                "linkedin": "https://cz.linkedin.com/in/vojta-t%C5%AFma-88176460"
-            }
+        "company": {
+            "name": "Keboola",
+            "link": "https://www.keboola.com/"
+        },
+        "contact": {
+            "linkedin": "https://cz.linkedin.com/in/vojta-t%C5%AFma-88176460"
         },
         "presentations": [
             {
                 "name": "Ako moderné dátové platformy využívajú AI",
                 "description": "Prieskum inovatívnych spôsobov, akými súčasné technológie a umelá inteligencia (AI) integrované do spracovania a analýzy veľkých objemov dát. Rozoberá kľúčové koncepty, ako sú strojové učenie, hlboké učenie a automatizácia, a ich aplikácie v rámci dátových platform, čím poskytuje účastníkom prehľad o tom, ako AI zvyšuje efektivitu, presnosť a inovácie v oblasti dátových analýz. Prednáška ponúka prípadové štúdie a praktické príklady, ktoré ilustrujú, ako firmy využívajú tieto technológie na zlepšenie rozhodovania a zákazníckej skúsenosti. ",
+                "capacity": 50,
                 "stage_sid": "aidata",
                 "timeslot_index": 6
             }

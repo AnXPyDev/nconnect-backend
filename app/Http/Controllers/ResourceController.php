@@ -72,7 +72,7 @@ class ResourceController extends Controller {
         $resource = Resource::find($req['id']);
 
         if (!is_null($resource->path)) {
-            Storage::delete($resource->path);
+            //Storage::delete($resource->path);
         }
 
         $resource->path = Str::uuid()->toString() . '.' . $req['extension'];

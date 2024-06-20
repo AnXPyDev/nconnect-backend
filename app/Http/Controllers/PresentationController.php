@@ -20,6 +20,7 @@ class PresentationController extends Controller
             'long_description' => 'string|nullable',
             'speaker_id' => 'nullable|exists:speakers,id',
             'image_id' => 'nullable|exists:resources,id',
+            'capacity' => 'integer|nullable'
         ]);
 
         $presentation = Presentation::factory()->make([
@@ -27,7 +28,8 @@ class PresentationController extends Controller
             'description' => $req['description'],
             'long_description' => $req['long_description'],
             'speaker_id' => $req['speaker_id'] ?? null,
-            'image_id' => $req['image_id'] ?? null
+            'image_id' => $req['image_id'] ?? null,
+            'capacity' => $req['capacity'] ?? null
         ]);
 
         $presentation->save();
@@ -43,6 +45,7 @@ class PresentationController extends Controller
             'long_description' => 'string|nullable',
             'image_id' => 'nullable|exists:resources,id',
             'speaker_id' => 'nullable|exists:speakers,id',
+            'capacity' => 'integer|nullable'
         ]);
 
         $presentation = Presentation::find($req["id"]);
@@ -52,6 +55,7 @@ class PresentationController extends Controller
         $presentation->long_description = $req["long_description"];
         $presentation->image_id = $req["image_id"] ?? null;
         $presentation->speaker_id = $req["speaker_id"] ?? null;
+        $presentation->capacity = $req["capacity"] ?? null;
 
         $presentation->save();
 

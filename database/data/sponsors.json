@@ -1,0 +1,31 @@
+[
+    {
+        "name": "GymBeam",
+        "contact": {
+            "website": "https://gymbeam.sk",
+            "instagram": "https://instagram.com/gymbeamsk"
+        },
+        "image": "images/gymbeam.png"
+    },
+    {
+        "name": "PowerPlay Studio",
+        "contact": {
+            "instagram": "https://www.instagram.com/powerplay_studio_pps/"
+        },
+        "image": "images/powerplay_studio.png"
+    },
+    {
+        "name": "FPVaI UKF",
+        "contact": {
+            "website": "https://www.fpvai.ukf.sk/sk/"
+        },
+        "image": "images/fpvai.png"
+    },
+    {
+        "name": "CSNitra",
+        "contact": {
+            "facebook": "https://www.facebook.com/CSNitra"
+        },
+        "image": "images/catering.png"
+    }
+]

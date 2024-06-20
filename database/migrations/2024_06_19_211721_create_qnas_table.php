@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('qnas', function (Blueprint $table) {
             $table->id();
-            $table->string('username');
-            $table->string('password_hash');
-            $table->unsignedTinyInteger('priv')->default(0);
             $table->timestamps();
+            $table->string('question');
+            $table->text('answer');
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('qnas');
     }
 };

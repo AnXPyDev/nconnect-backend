@@ -1,0 +1,20 @@
+[
+    {
+        "name": "Dominik Halvoník",
+        "role": "Organizátor",
+        "contact": {
+            "phone": "+421 902 170 744",
+            "email": "dhalvonik@ukf.sk"
+        },
+        "image": "images/dominik_halvonik.jpg"
+    },
+    {
+        "name": "Jaroslav Reichel",
+        "role": "Organizátor",
+        "contact": {
+            "phone": "+421 904 687 757",
+            "email": "jreichel@ukf.sk"
+        },
+        "image": "images/jaroslav_reichel.jpg"
+    }
+]

@@ -27,7 +27,7 @@ class AdminController extends Controller
         }
 
         return response()->json([
-            'token' => $admin->createToken("auth_token", ["admin"])->plainTextToken,
+            'token' => $admin->tokenWithPriv()->plainTextToken,
             'data' => $admin
         ]);
     }
@@ -40,7 +40,41 @@ class AdminController extends Controller
 
     public function info(Request $request) {
         return response()->json([
-            "data" => []
+            "data" => $request->user()
+        ]);
+    }
+
+    public function register() {
+
+    }
+
+    public function setpriv() {
+        $req = $this->validate([
+            'id' => 'required|exists:admins,id',
+            'priv' => 'required|int'
+        ]);
+
+        $admin = Admin::find($req['id']);
+
+        $admin->priv = $req['priv'];
+
+        $admin->save();
+
+        return response()->json([]);
+    }
+
+    public function changepassword() {
+        $req = $this->validate([
+            'password' => 'required|string'
+        ]);
+
+        $admin = $this->user();
+
+    }
+
+    public function index() {
+        return response()->json([
+            'admins' => Admin::all()
         ]);
     }
 }
