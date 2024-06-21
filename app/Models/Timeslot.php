@@ -61,7 +61,7 @@ class Timeslot extends Model
 
         $presentation = Presentation::find($presentation_id);
 
-        if (!$presentation->generic && $presentation->timeslot()->exists()) {
+        if (!$presentation->generic && $presentation->timeslots()->exists()) {
             response()->json([
                 'code' => Codes::OCCUPIED,
                 'message' => 'Presentation already in timeslot'

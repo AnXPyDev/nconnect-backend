@@ -7,11 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as AuthUser;
 use Laravel\Sanctum\HasApiTokens;
 
-class Resource extends AuthUser
+class User extends AuthUser
 {
     use HasFactory, HasApiTokens;
 
-    protected $casts = [
-        'metadata' => 'array'
-    ];
+    public function token() {
+        return $this->createToken('auth_token',
+            ['user']
+        );
+    }
 }

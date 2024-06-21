@@ -14,7 +14,7 @@ class ResourceController extends Controller {
         $req = $this->validate([
             'name' => 'required|string',
             'type' => 'required|string',
-            'metadata' => 'nullable|json'
+            'metadata' => 'nullable|array'
         ]);
 
         $resource = Resource::factory()->create([
@@ -33,7 +33,7 @@ class ResourceController extends Controller {
             'id' => 'required|exists:resources,id',
             'name' => 'required|string',
             'type' => 'required|string',
-            'metadata' => 'nullable|json'
+            'metadata' => 'nullable|array'
         ]);
 
         $resource = Resource::find($req['id']);
@@ -57,10 +57,12 @@ class ResourceController extends Controller {
         $resource = Resource::find($req['id']);
 
         if (!is_null($resource->path)) {
-            Storage::delete($resource->path);
+            //Storage::delete($resource->path);
         }
 
         $resource->delete();
+
+        return response()->json();
     }
 
     function upload() {
@@ -102,13 +104,32 @@ class ResourceController extends Controller {
 
     function images() {
         return response()->json([
-            'images' => Resource::all()->where('type', 'image')
+            'images' => Resource::where('type', 'image')->get()
         ]);
     }
 
     function pages() {
         return response()->json([
-            'pages' => Resource::all()->where('type', 'page')
+            'pages' => Resource::where('type', 'page')->get()
+        ]);
+    }
+
+    function pagefromslug() {
+        $req = $this->validate([
+            'slug' => 'required|string'
+        ]);
+
+        $page = Resource::where('type', 'page')->where('metadata->slug', $req['slug']);
+
+        if (!$page->exists()) {
+            return response()->json([
+                'code' => Codes::NOTFOUND,
+                'message' => "Page not found"
+            ]);
+        }
+
+        return response()->json([
+            'page' => $page->first()
         ]);
     }
 }

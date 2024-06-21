@@ -73,6 +73,12 @@ class GalleryController extends Controller
         ]);
     }
 
+    function publicindex() {
+        return response()->json([
+            'galleries' => Gallery::where('public', true)->get()
+        ]);
+    }
+
     function images() {
         $req = $this->validate([
             'id' => 'required|exists:galleries,id'

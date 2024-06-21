@@ -15,4 +15,5 @@ class Codes
     public const EMPTY = 994;
 
     public const NOEXTENSION = 1025;
+    public const NOTFOUND = 1026;
 }

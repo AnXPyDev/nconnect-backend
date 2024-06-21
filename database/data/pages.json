@@ -1,0 +1,10 @@
+[
+    {
+        "name": "Ochrana osobných údajov",
+        "path": "pages/privacy.html",
+        "type": "page",
+        "metadata": {
+            "slug": "privacy"
+        }
+    }
+]

@@ -126,10 +126,12 @@ Route::controller(ResourceController::class)->prefix("resource")->group(function
         Route::post("/create", "create");
         Route::post("/edit", "edit");
         Route::put("/upload", "upload");
+        Route::post("/delete", "delete");
     });
 
     Route::post("/images", "images");
     Route::post("/pages", "pages");
+    Route::post("/pagefromslug", "pagefromslug");
     Route::get("/get", "get");
 });
 
@@ -145,6 +147,7 @@ Route::controller(GalleryController::class)->prefix("gallery")->group(function (
 
     Route::post("/images", "images");
     Route::post("/index", "index");
+    Route::post("/publicindex", "publicindex");
 });
 
 Route::controller(OrganizerController::class)->prefix("organizer")->group(function () {

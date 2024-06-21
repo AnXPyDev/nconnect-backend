@@ -170,5 +170,8 @@ class DatabaseSeeder extends Seeder
 
         $qnas_data = json_decode(File::get("database/data/qnas.json"), true);
         Qna::factory()->createMany($qnas_data);
+
+        $pages_data = json_decode(File::get("database/data/pages.json"), true);
+        Resource::factory()->createMany($pages_data);
     }
 }
