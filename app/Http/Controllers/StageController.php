@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Stage;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class StageController extends Controller
 {
@@ -62,22 +63,43 @@ class StageController extends Controller
 
         return response()->json(['timeslots' => $stage->timeslots()->get()]);
     }
-    
-    function timeslotsplus() {
+
+    function scheduleinfo() {
         $req = $this->validate([
             'id' => 'required|exists:stages,id'
         ]);
 
         $stage = Stage::find($req["id"]);
 
-        $timeslots = $stage->timeslots()->get();
+        $timeslots = $stage->timeslots()
+            ->whereHas('presentation')
+            ->with('presentation.speaker')
+            ->get();
 
+
+        /*
         foreach ($timeslots as $timeslot) {
-            if (!is_null($timeslot->presentation)) {
-                $timeslot->presentation->load('speaker');
-            }
+            $timeslot->presentation->load('speaker');
+            Log::info(var_export($timeslot, true));
+            $timeslot->append('remaining_capacity');
+            Log::info(var_export($timeslot, true));
         }
 
-        return response()->json(['timeslots' => $timeslots]);
+        GRATULUJEM CLOVEKU ZA KTOREHO NEJDE APPENDUT ATTRIUT LEBO UNLOADNE RELATIONSHIP Z NEJAKEHO DOVODU TAK TO MUSIM DAT DO ARRAYU
+        */
+
+
+        $idc_array = [];
+
+        foreach ($timeslots as $timeslot) {
+            $arr = $timeslot->toArray();
+            $arr['remaining_capacity'] = $timeslot->remaining_capacity; // CTJB
+            $idc_array[] = $arr;
+        }
+
+
+        return response()->json([
+            'timeslots' => $idc_array
+        ]);
     }
 }

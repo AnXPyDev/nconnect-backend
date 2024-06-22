@@ -17,6 +17,7 @@ use App\Http\Controllers\HeadlinerController;
 use App\Http\Controllers\TestimonialController;
 use App\Http\Controllers\ResourceController;
 
+use App\Http\Middleware\Cors;
 
 Route::post("ping", function() {
     return response()->json([
@@ -34,6 +35,7 @@ Route::prefix("auth")->group(function () {
         });
         Route::middleware("authx:admin,priv-super")->group(function () {
             Route::post("/setpriv", "setpriv");
+            Route::post("/register", "register");
             Route::post("/index", "index");
         });
     });
@@ -42,7 +44,16 @@ Route::prefix("auth")->group(function () {
 Route::controller(UserController::class)->prefix("user")->group(function () {
     Route::post("/register", "register");
     Route::middleware("authx:user")->group(function () {
+        Route::post("/unregister", "unregister");
         Route::post("/info", "info");
+        Route::post("/registertimeslot", "registertimeslot");
+        Route::post("/unregistertimeslot", "unregistertimeslot");
+        Route::post("/mytimeslots", "mytimeslots");
+    });
+    Route::middleware("authx:admin,priv-view")->group(function () {
+        Route::post("/index", "index");
+        Route::post("/timeslots", "timeslots");
+        Route::post("/adminunregistertimeslot", "adminunregistertimeslot");
     });
 });
 
@@ -98,7 +109,7 @@ Route::controller(StageController::class)->prefix("stage")->group(function () {
     });
     Route::post("/index", "index");
     Route::post("/timeslots", "timeslots");
-    Route::post("/timeslotsplus", "timeslotsplus");
+    Route::post("/scheduleinfo", "scheduleinfo");
 });
 
 Route::controller(PresentationController::class)->prefix("presentation")->group(function () {

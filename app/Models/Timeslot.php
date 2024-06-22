@@ -49,6 +49,19 @@ class Timeslot extends Model
         return $this->belongsTo(Stage::class);
     }
 
+    public function users() {
+        return $this->belongsToMany(User::class, 'user_timeslot_pivot');
+    }
+
+    public function getCapacityAttribute() {
+        $this->load('presentation');
+        return $this->presentation->capacity ?? PHP_INT_MAX;
+    }
+
+    public function getRemainingCapacityAttribute() {
+        return $this->capacity - $this->users()->count();
+    }
+
     public function setPresentation($presentation_id) {
         if (is_null($presentation_id)) {
             $this->presentation_id = null;
@@ -71,6 +84,10 @@ class Timeslot extends Model
         $this->presentation_id = $presentation->id;
     }
 
+    public function checkOverlap(Timeslot $other) {
+        return $this->start_at->lt($other->end_at) && $this->end_at->gt($other->start_at);
+    }
+
     public function getOverlaps() {
         $this->load('stage');
         $stage = $this->stage;
@@ -82,7 +99,7 @@ class Timeslot extends Model
                 continue;
             }
 
-            if ($this->start_at->lt($other->end_at) && $this->end_at->gt($other->start_at)) {
+            if ($this->checkOverlap($other)) {
                 $overlaps[] = $other;
             }
         }

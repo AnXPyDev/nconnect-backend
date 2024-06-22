@@ -24,6 +24,7 @@ return new class extends Migration
             $table->unsignedInteger('capacity')->nullable();
             $table->foreignId('image_id')->nullable()->constrained('resources');
             $table->boolean('generic')->default(false);
+            $table->boolean('allow_registration')->default(true);
             $table->foreignIdFor(Speaker::class)->nullable();
         });
     }

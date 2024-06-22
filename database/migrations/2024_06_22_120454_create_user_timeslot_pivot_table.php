@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('user_timeslot_pivot', function (Blueprint $table) {
             $table->id();
-            $table->string('username')->unique();
-            $table->string('password_hash');
-            $table->unsignedTinyInteger('priv')->default(0);
             $table->timestamps();
+            $table->foreignIdFor(\App\Models\User::class);
+            $table->foreignIdFor(\App\Models\Timeslot::class);
         });
     }
 
@@ -25,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('admins');
+        Schema::dropIfExists('user_timeslot_pivot');
     }
 };
