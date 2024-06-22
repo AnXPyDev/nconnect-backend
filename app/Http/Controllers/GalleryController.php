@@ -87,6 +87,7 @@ class GalleryController extends Controller
         $gallery = Gallery::find($req['id']);
 
         return response()->json([
+            'gallery' => $gallery,
             'images' => $gallery->images()->get()->all()
         ]);
     }

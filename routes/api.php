@@ -2,6 +2,7 @@
 
 use App\Http\Codes;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\GalleryController;
 use App\Http\Controllers\ConferenceController;
 use App\Http\Controllers\QnaController;
@@ -35,6 +36,13 @@ Route::prefix("auth")->group(function () {
             Route::post("/setpriv", "setpriv");
             Route::post("/index", "index");
         });
+    });
+});
+
+Route::controller(UserController::class)->prefix("user")->group(function () {
+    Route::post("/register", "register");
+    Route::middleware("authx:user")->group(function () {
+        Route::post("/info", "info");
     });
 });
 
