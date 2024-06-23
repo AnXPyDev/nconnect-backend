@@ -36,7 +36,9 @@ class Presentation extends Model
 
     protected $casts = [
         'start_date' => 'datetime',
-        'end_date' => 'datetime'
+        'end_date' => 'datetime',
+        'generic' => 'boolean',
+        'allow_registration' => 'boolean'
     ];
 
     public function timeslots() {

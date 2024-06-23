@@ -23,8 +23,8 @@ return new class extends Migration
             $table->text('long_description')->nullable();
             $table->unsignedInteger('capacity')->nullable();
             $table->foreignId('image_id')->nullable()->constrained('resources');
-            $table->boolean('generic')->default(false);
-            $table->boolean('allow_registration')->default(true);
+            $table->tinyInteger('generic')->default(0);
+            $table->tinyInteger('allow_registration')->default(1);
             $table->foreignIdFor(Speaker::class)->nullable();
         });
     }
