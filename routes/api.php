@@ -151,7 +151,7 @@ Route::controller(ResourceController::class)->prefix("resource")->group(function
     Route::middleware('authx:admin,priv-edit')->group(function () {
         Route::post("/create", "create");
         Route::post("/edit", "edit");
-        Route::put("/upload", "upload");
+        Route::post("/upload", "upload");
         Route::post("/delete", "delete");
     });
 
