@@ -17,7 +17,7 @@ return new class extends Migration
             $table->timestamps();
             $table->string('name');
             $table->text('description')->nullable();
-            $table->boolean('public')->default(false);
+            $table->tinyInteger('public')->default(0);
             $table->foreignId('thumbnail_id')->nullable()->constrained('resources');
         });
     }

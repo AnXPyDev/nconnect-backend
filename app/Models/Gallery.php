@@ -9,6 +9,10 @@ class Gallery extends Model
 {
     use HasFactory;
 
+    protected $casts = [
+        'public' => 'boolean'
+    ];
+
     public function images() {
         return $this->belongsToMany(Resource::class, 'gallery_resource_pivot');
     }

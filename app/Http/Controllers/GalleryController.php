@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Codes;
 use App\Models\GalleryResourcePivot;
 use App\Models\Resource;
+use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
 use App\Models\Gallery;
+use Illuminate\Support\Facades\DB;
 
 class GalleryController extends Controller
 {
@@ -141,7 +143,9 @@ class GalleryController extends Controller
             'resource_id' => 'required|exists:resources,id'
         ]);
 
-        $pivot = GalleryResourcePivot::where('gallery_id', $req['id'])->where('resource_id', $req['resource_id']);
+        $resource = Resource::find($req['resource_id']);
+
+        $pivot = GalleryResourcePivot::where('gallery_id', $req['id'])->where('resource_id', $resource->id);
 
         if (!$pivot->exists()) {
             return response()->json([
@@ -150,7 +154,21 @@ class GalleryController extends Controller
             ]);
         }
 
-        $pivot->first()->delete();
+        try {
+            DB::beginTransaction();
+            $pivot->delete();
+            $resource->delete();
+            DB::commit();
+        } catch (QueryException $e) {
+            DB::rollBack();
+            if ($e->getCode() === '23000') {
+                $pivot->resource_id = $resource->id;
+                return response()->json([
+                    'code' => Codes::OCCUPIED,
+                    'message' => "Cannot remove image because it is assigned to another entity"
+                ]);
+            }
+        }
 
         return response()->json();
     }

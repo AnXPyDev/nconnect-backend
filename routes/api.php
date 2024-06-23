@@ -37,6 +37,7 @@ Route::prefix("auth")->group(function () {
             Route::post("/setpriv", "setpriv");
             Route::post("/register", "register");
             Route::post("/index", "index");
+            Route::post("/delete", "delete");
         });
     });
 });
@@ -53,6 +54,9 @@ Route::controller(UserController::class)->prefix("user")->group(function () {
     Route::middleware("authx:admin,priv-view")->group(function () {
         Route::post("/index", "index");
         Route::post("/timeslots", "timeslots");
+    });
+    Route::middleware("authx:admin,priv-super")->group(function () {
+        Route::post("/adminunregister", "adminunregister");
         Route::post("/adminunregistertimeslot", "adminunregistertimeslot");
     });
 });
@@ -127,6 +131,9 @@ Route::controller(TimeslotController::class)->prefix("timeslot")->group(function
         Route::post("/create", "create");
         Route::post("/edit", "edit");
         Route::post("/delete", "delete");
+    });
+    Route::middleware('authx:admin,priv-view')->group(function () {
+        Route::post("/users", "users");
     });
     Route::post("/presentation", "presentation");
 });

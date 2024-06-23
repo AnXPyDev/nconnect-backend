@@ -42,7 +42,7 @@ class UserController extends Controller
         $user = request()->user();
 
         UserTimeslotPivot::where('user_id', $user->id)->delete();
-        $user->currentAccessToken()->delete();
+        $user->tokens()->delete();
         $user->delete();
 
 
@@ -99,7 +99,7 @@ class UserController extends Controller
         return response()->json([]);
     }
 
-    function internal_unregistertimeslots(User $user, Timeslot $timeslot) {
+    function internal_unregistertimeslot(User $user, Timeslot $timeslot) {
         $pivot = UserTimeslotPivot::where('user_id', $user->id)->where('timeslot_id', $timeslot->id);
 
         if (!$pivot->exists()) {
@@ -120,11 +120,9 @@ class UserController extends Controller
 
         $user = request()->user();
 
-        $user->load('timeslots');
-
         $timeslot = Timeslot::find($req['id']);
 
-        $this->internal_unregistertimeslots($user, $timeslot);
+        $this->internal_unregistertimeslot($user, $timeslot);
 
         return response()->json([]);
     }
@@ -132,16 +130,31 @@ class UserController extends Controller
     function adminunregistertimeslot() {
         $req = $this->validate([
             'id' => 'required|exists:users,id',
-            'timeslots_id' => 'required|exists:timeslots,id'
+            'timeslot_id' => 'required|exists:timeslots,id'
         ]);
 
         $user = User::find($req['id']);
 
-        $user->load('timeslots');
+        $timeslot = Timeslot::find($req['timeslot_id']);
 
-        $timeslot = Timeslot::find($req['id']);
+        $this->internal_unregistertimeslot($user, $timeslot);
 
-        $this->internal_unregistertimeslots($user, $timeslot);
+        return response()->json([]);
+    }
+
+    function adminunregister() {
+        $req = $this->validate([
+            'id' => 'required|exists:users,id'
+        ]);
+
+        $user = User::find($req['id']);
+
+        UserTimeslotPivot::where('user_id', $user->id)->delete();
+        $user->tokens()->delete();
+        $user->delete();
+
+
+        Mail::to($user->email)->queue(new UnregisterMail($user->name));
 
         return response()->json([]);
     }

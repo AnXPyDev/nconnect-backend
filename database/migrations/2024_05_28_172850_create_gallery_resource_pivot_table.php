@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->foreignIdFor(Gallery::class);
-            $table->foreignIdFor(Resource::class);
+            $table->foreignIdFor(Resource::class)->nullable();
         });
     }
 

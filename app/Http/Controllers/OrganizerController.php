@@ -11,14 +11,14 @@ class OrganizerController extends Controller
         $req = $this->validate([
             'name' => 'required',
             'role' => 'required',
-            'contact' => 'required|array',
+            'contact' => 'nullable|array',
             'image_id' => 'nullable|exists:resources,id'
         ]);
 
         $organizer = Organizer::factory()->create([
             "name" => $req["name"],
             "role" => $req["role"],
-            "contact" => $req["contact"],
+            "contact" => $req["contact"] ?? null,
             "image_id" => $req["image_id"] ?? null
         ]);
 
@@ -36,7 +36,7 @@ class OrganizerController extends Controller
             'id' => 'required|exists:organizers,id',
             'name' => 'required',
             'role' => 'required',
-            'contact' => 'required|array',
+            'contact' => 'nullable|array',
             'image_id' => 'nullable|exists:resources,id'
         ]);
 
@@ -44,7 +44,7 @@ class OrganizerController extends Controller
 
         $organizer->name = $req["name"];
         $organizer->role = $req["role"];
-        $organizer->contact = $req["contact"];
+        $organizer->contact = $req["contact"] ?? null;
         $organizer->image_id = $req["image_id"] ?? null;
 
         $organizer->save();

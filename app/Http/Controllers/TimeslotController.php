@@ -97,5 +97,17 @@ class TimeslotController extends Controller
         ]);
     }
 
+    function users() {
+        $req = $this->validate([
+            'id' => 'required|exists:timeslots,id'
+        ]);
+
+        $timeslot = Timeslot::find($req['id']);
+
+        return response()->json([
+            'users' => $timeslot->users()->get()
+        ]);
+
+    }
 
 }
