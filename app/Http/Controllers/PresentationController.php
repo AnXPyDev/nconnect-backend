@@ -21,7 +21,8 @@ class PresentationController extends Controller
             'speaker_id' => 'nullable|exists:speakers,id',
             'image_id' => 'nullable|exists:resources,id',
             'capacity' => 'integer|nullable',
-            'allow_registration' => 'boolean|nullable'
+            'allow_registration' => 'boolean|nullable',
+            'generic' => 'boolean|nullable'
         ]);
 
         $presentation = Presentation::factory()->make([
@@ -31,7 +32,8 @@ class PresentationController extends Controller
             'speaker_id' => $req['speaker_id'] ?? null,
             'image_id' => $req['image_id'] ?? null,
             'capacity' => $req['capacity'] ?? null,
-            'allow_registration' => $req['allow_registration'] ?? null
+            'allow_registration' => $req['allow_registration'] ?? null,
+            'generic' => $req['allow_registration'] ?? null
         ]);
 
         $presentation->save();
@@ -48,7 +50,8 @@ class PresentationController extends Controller
             'image_id' => 'nullable|exists:resources,id',
             'speaker_id' => 'nullable|exists:speakers,id',
             'capacity' => 'integer|nullable',
-            'allow_registration' => 'boolean|nullable'
+            'allow_registration' => 'boolean|nullable',
+            'generic' => 'boolean|nullable'
         ]);
 
         $presentation = Presentation::find($req["id"]);
@@ -60,6 +63,7 @@ class PresentationController extends Controller
         $presentation->speaker_id = $req["speaker_id"] ?? null;
         $presentation->capacity = $req["capacity"] ?? null;
         $presentation->allow_registration = $req["allow_registration"] ?? null;
+        $presentation->generic = $req["generic"] ?? null;
 
         $presentation->save();
 
@@ -100,12 +104,10 @@ class PresentationController extends Controller
             'id' => 'required|exists:presentations,id'
         ]);
 
-
         $presentation = Presentation::find($req['id']);
-        $has_timeslot = $presentation->timeslot();
+        $timeslots = $presentation->timeslots()->get();
 
-        if ($has_timeslot->exists()) {
-            $timeslot = $has_timeslot->first();
+        foreach ($timeslots as $timeslot) {
             $timeslot->presentation_id = null;
             $timeslot->save();
         }

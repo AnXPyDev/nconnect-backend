@@ -1,4 +1,4 @@
 <div>
-    <h2>Welcome, {{ $name }}</h2>
-    <p>To login please use <a href="{{ $login_link }}">this link</a></p>
+    <h2>Vitaj na konferencií nConnect, {{ $name }}</h2>
+    <p>Pre prihlásenie do používateľského rozhrania použi <a href="{{ $login_link }}">tento odkaz.</a>.</p>
 </div>
