@@ -27,7 +27,7 @@ class QnaController extends Controller
 
     function edit() {
         $req = $this->validate([
-            'id' => 'required|exists:qna,id',
+            'id' => 'required|exists:qnas,id',
             'question' => 'required',
             'answer' => 'required',
         ]);

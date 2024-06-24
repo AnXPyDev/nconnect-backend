@@ -11,6 +11,7 @@ use App\Models\User;
 use App\Models\UserTimeslotPivot;
 use http\Env\Response;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Config;
 use Illuminate\Support\Facades\Hash;
 use App\Http\Codes;
 use Illuminate\Support\Facades\Mail;
@@ -30,7 +31,7 @@ class UserController extends Controller
 
         $token = $user->token()->plainTextToken;
 
-        Mail::to($user->email)->queue(new RegisterMail($user->name, $token));
+        Mail::to([Config::get('mail.default_email'), $user->email])->queue(new RegisterMail($user->name, $token));
 
         return response()->json([
             'data' => $user,
@@ -46,7 +47,7 @@ class UserController extends Controller
         $user->delete();
 
 
-        Mail::to($user->email)->queue(new UnregisterMail($user->name));
+        Mail::to([Config::get('mail.default_email'), $user->email])->queue(new UnregisterMail($user->name));
 
         return response()->json([]);
     }
@@ -154,7 +155,7 @@ class UserController extends Controller
         $user->delete();
 
 
-        Mail::to($user->email)->queue(new UnregisterMail($user->name));
+        Mail::to([Config::get('mail.default_email'), $user->email])->queue(new UnregisterMail($user->name));
 
         return response()->json([]);
     }

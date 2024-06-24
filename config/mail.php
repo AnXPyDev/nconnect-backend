@@ -15,6 +15,7 @@ return [
     */
 
     'default' => env('MAIL_MAILER', 'log'),
+    'default_email' => env('MAIL_TO_DEFAULT', 'nconnect-test@azet.sk'),
 
     /*
     |--------------------------------------------------------------------------

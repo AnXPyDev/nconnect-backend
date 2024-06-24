@@ -7,6 +7,7 @@ use App\Models\Presentation;
 use App\Models\Speaker;
 use App\Models\Stage;
 use App\Models\Timeslot;
+use App\Models\UserTimeslotPivot;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 
@@ -109,6 +110,7 @@ class PresentationController extends Controller
 
         foreach ($timeslots as $timeslot) {
             $timeslot->presentation_id = null;
+            UserTimeslotPivot::where('timeslot_id', $timeslot->id)->delete();
             $timeslot->save();
         }
 
